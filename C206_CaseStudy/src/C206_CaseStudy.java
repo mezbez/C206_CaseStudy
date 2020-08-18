@@ -140,14 +140,19 @@ public class C206_CaseStudy {
 					}
 
 				} else if (adMenu == 2) {
-					int manageOption = Helper.readInt("Enter option 1(Add) or 2(Delete) > ");
+					System.out.println("1. Add package");
+					System.out.println("2. Delete package");
+					int manageOption = Helper.readInt("Enter option > ");
 
 					if (manageOption == 1) {
 						String packageCode = Helper.readString("Enter package code > ");
 						String packageDescription = Helper.readString("Enter package description > ");
 						String packageStartDate = Helper.readString("Enter package start date > ");
 						String packageEndDate = Helper.readString("Enter package end date > ");
-						String packageAmount = Helper.readString("Enter package amount > ");
+						int packageAmount = Helper.readInt("Enter package amount > ");
+						
+						packageList.add(new Package(packageCode, packageDescription , packageStartDate , packageEndDate , packageAmount));
+						System.out.println("Package Added! ");
 
 					} else if (manageOption == 2) {
 
