@@ -211,11 +211,10 @@ public class C206_CaseStudy {
 				}
 			}
 		}
-<<<<<<< HEAD
-=======
+
 	}
 
->>>>>>> branch 'master' of https://github.com/mezbez/C206_CaseStudy.git
+
 	public static void menu() {
 		C206_CaseStudy.setHeader("RENOVATION ACE APP");
 		System.out.println("1. View as a Visitor");
@@ -276,19 +275,13 @@ public class C206_CaseStudy {
 		int budgetAmount = Helper.readInt("Enter your budget: ");
 		String targetCompletionDate = Helper.readString("Enter the targeted completion date: ");
 		String renovationType = Helper.readString("Enter renovation type (whole house, room, kitchen, toilet)");
-<<<<<<< HEAD
+
 		int roomRenovationAmount = Helper.readInt("Enter number of room to renovate: ");
 		int toiletRenovationAmount = Helper.readInt("Enter number of toilets to renovate");
 		String renovationString = Helper.readString("Enter renovation style: ");
 
 		boolean isUrgent = Helper.readBoolean("Do you need it done within three months?");
-
-=======
-		int roomRenovationAmount = Helper.readInt("Enter number of room to renovate: ");
-		int toiletRenovationAmount = Helper.readInt("Enter number of toilets to renovate");
-		String renovationString = Helper.readString("Enter renovation style: ");
-		boolean isUrgent = Helper.readBoolean("Do you need it done within three months?");
->>>>>>> branch 'master' of https://github.com/mezbez/C206_CaseStudy.git
+		
 		Request r = new Request(quotationID, propertyType, areaSize, requestName, contactNo, emailAddress, budgetAmount,
 				targetCompletionDate, renovationType, roomRenovationAmount, toiletRenovationAmount, renovationString,
 				isUrgent);
