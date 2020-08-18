@@ -172,20 +172,9 @@ public class C206_CaseStudy {
 						Package packagetoAdd = new Package(packageCode, packageDescription, packageStartDate, packageEndDate, packageAmount);
 						packageList.add(packagetoAdd);
 						System.out.println("We've added your package for you!");
-
 					} else if (manageOption == 2) {
-						String packageCode = Helper.readString("Enter package code > ");
-						for (Package i : packageList)
-						{
-							if (i.getPackageCode().contentEquals(packageCode))
-							{
-								packageList.remove(i);
-							}
-						}
-					}
-						String deletePackage = Helper.readString("Enter package code to delete package  > ");
 						boolean packageFound = false;
-
+						String deletePackage = Helper.readString("Enter package code > ");
 						for (int i = 0; i < packageList.size(); i++) {
 							if (deletePackage.equals(packageList.get(i).getPackageCode())) {
 								System.out.println("Package Deleted");
@@ -195,6 +184,7 @@ public class C206_CaseStudy {
 						}
 						if (packageFound == false) {
 							System.out.println("Invalid package code");
+					}
 						} else {
 						System.out.println("Invalid Option");
 					}
@@ -300,7 +290,7 @@ public class C206_CaseStudy {
 	public static void viewAllCustomer(ArrayList<Customer> customerList) {
 		C206_CaseStudy.setHeader("CUSTOMER LIST");
 		String output = String.format(theOtherFormat, "ID", "NAME", "NUMBER", "EMAIL", "STATUS");
-		output += retrieveAllCustomer(customerList);
+		//output += retrieveAllCustomer(customerList);
 		System.out.println(output);
 
 	}
