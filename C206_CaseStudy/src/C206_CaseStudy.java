@@ -133,7 +133,9 @@ public class C206_CaseStudy {
 					}
 
 				} else if (adMenu == 2) {
-					int manageOption = Helper.readInt("Enter option 1(Add) or 2(Delete) > ");
+					System.out.println("1. Add package");
+					System.out.println("2. Delete package");
+					int manageOption = Helper.readInt("Enter option > ");
 
 					if (manageOption == 1) {
 						String packageCode = Helper.readString("Enter package code > ");
@@ -144,6 +146,9 @@ public class C206_CaseStudy {
 						Package packagetoAdd = new Package(packageCode, packageDescription, packageStartDate, packageEndDate, packageAmount);
 						packageList.add(packagetoAdd);
 						System.out.println("We've added your package for you!");
+						
+						packageList.add(new Package(packageCode, packageDescription , packageStartDate , packageEndDate , packageAmount));
+						System.out.println("Package Added! ");
 
 					} else if (manageOption == 2) {
 						String packageCode = Helper.readString("Enter package code > ");
@@ -155,7 +160,19 @@ public class C206_CaseStudy {
 							}
 						}
 					}
-
+						String deletePackage = Helper.readString("Enter package code to delete package  > ");
+						boolean packageFound = false;
+						
+						for (int i = 0; i < packageList.size(); i++) {
+							if (deletePackage.equals(packageList.get(i).getPackageCode())) {
+								System.out.println("Package Deleted");
+								packageList.remove(i);
+								packageFound = true; 
+							}
+						}
+						if (packageFound == false) {
+							System.out.println("Invalid package code");
+						}
 					} else {
 						System.out.println("Invalid Option");
 					}
@@ -178,7 +195,6 @@ public class C206_CaseStudy {
 		}
 
 	}
-
 	public static void menu() {
 		C206_CaseStudy.setHeader("RENOVATION ACE APP");
 		System.out.println("1. View as a Visitor");
