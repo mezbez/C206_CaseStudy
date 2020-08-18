@@ -77,8 +77,8 @@ public class C206_CaseStudy {
 
 				if (customerMenu == 1) {
 					// Register Customer
-					Customer cus = inputCustomer();
-					C206_CaseStudy.addCustomer(customerList, cus);
+					Customer cus = inputCust();
+					C206_CaseStudy.addCust(customerList, cus);
 				} else if (customerMenu == 2) {
 					//Request for Quotation
 					Request r = requestQuotation();
@@ -201,7 +201,9 @@ public class C206_CaseStudy {
 				}
 			}
 		}
+
 	}
+
 
 	public static void menu() {
 		C206_CaseStudy.setHeader("RENOVATION ACE APP");
@@ -235,8 +237,8 @@ public class C206_CaseStudy {
 		System.out.println("5. Manage Appointment");
 	}
 
-	// ===========Register Customer==========
-	public static Customer inputCustomer() {
+	// ===========Register Customer(CustomerMenu)==========
+	public static Customer inputCust() {
 		int customerID = Helper.readInt("Enter customer ID: ");
 		String customerName = Helper.readString("Enter your name: ");
 		int contactNumber = Helper.readInt("Enter your contact number: ");
@@ -247,12 +249,12 @@ public class C206_CaseStudy {
 		return cus;
 	}
 
-	public static void addCustomer(ArrayList<Customer> customerList, Customer cus) {
+	public static void addCust(ArrayList<Customer> customerList, Customer cus) {
 		customerList.add(cus);
 		System.out.println("Customer added!");
 	}
 
-	// ==========Requesting for Quotation========
+	// ==========Requesting for Quotation(CustomerMenu)========
 	public static Request requestQuotation() {
 		String quotationID = Helper.readString("Enter quotation ID: ");
 		String propertyType = Helper.readString("Enter property type(HDB,Private,Landed):");
@@ -263,10 +265,13 @@ public class C206_CaseStudy {
 		int budgetAmount = Helper.readInt("Enter your budget: ");
 		String targetCompletionDate = Helper.readString("Enter the targeted completion date: ");
 		String renovationType = Helper.readString("Enter renovation type (whole house, room, kitchen, toilet)");
+
 		int roomRenovationAmount = Helper.readInt("Enter number of room to renovate: ");
 		int toiletRenovationAmount = Helper.readInt("Enter number of toilets to renovate");
 		String renovationString = Helper.readString("Enter renovation style: ");
+
 		boolean isUrgent = Helper.readBoolean("Do you need it done within three months?");
+		
 		Request r = new Request(quotationID, propertyType, areaSize, requestName, contactNo, emailAddress, budgetAmount,
 				targetCompletionDate, renovationType, roomRenovationAmount, toiletRenovationAmount, renovationString,
 				isUrgent);
