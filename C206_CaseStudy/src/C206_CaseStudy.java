@@ -90,6 +90,11 @@ public class C206_CaseStudy {
 					int manageOption = Helper.readInt("Enter option 1(Add) or 2(Delete) > ");
 					
 					if (manageOption == 1) {
+						String packageCode = Helper.readString("Enter package code > ");
+						String packageDescription = Helper.readString("Enter package description > ");
+						String packageStartDate = Helper.readString("Enter package start date > ");
+						String packageEndDate = Helper.readString("Enter package end date > ");
+						String packageAmount = Helper.readString("Enter package amount > ");
 						
 					} else if (manageOption == 2) {
 						
