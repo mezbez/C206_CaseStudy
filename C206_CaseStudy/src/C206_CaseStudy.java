@@ -100,49 +100,93 @@ public class C206_CaseStudy {
 					// System.out.println("4. Search customer by name");
 					int choices = Helper.readInt("Enter an option > ");
 					if (choices == 1) {
-						int ID = Helper.readInt("Enter new ID > ");
-						String Name = Helper.readString("Enter new customer name");
-						int Number = Helper.readInt("Enter customer phone number");
-						String email = Helper.readString("Enter customer email (example@example.com)");
-						String status = "new";
+						Customer CU = inputCustomer();
+						C206_CaseStudy.addCustomer(customerList, CU);
 
-						customerList.add(new Customer(ID, Name, Number, email, status));
-						System.out.println("Customer Added! ");
 					} else if (choices == 2) {
 						System.out.println("View all Customer");
 						C206_CaseStudy.retrieveAllCustomer(customerList);
-					}else if (choices == 3) {
-					System.out.println("Delete Customer");
-					int cID = Helper.readInt("Enter customer ID > ");
-					boolean isFound = false;
 
-					for (int i = 0; i < customerList.size(); i++) {
-						if (cID == customerList.get(i).getCustomerID()) {
-							System.out.println(customerList.get(i).getCustomerName() + "deleted ! ");
+					} else if (choices == 3) {
+						System.out.println("Delete Customer");
+						int cID = Helper.readInt("Enter customer ID > ");
+						boolean isFound = false;
 
-							customerList.remove(i);
-							isFound = true;
+						for (int i = 0; i < customerList.size(); i++) {
+							if (cID == customerList.get(i).getCustomerID()) {
+								System.out.println(customerList.get(i).getCustomerName() + "deleted ! ");
+
+								customerList.remove(i);
+								isFound = true;
+							}
+
+						}
+						if (isFound == false) {
+							System.out.println("The customer ID entered does not exist");
+						} else {
+							System.out.println("Invalid option");
+
 						}
 
-					}
-					if (isFound == false) {
-						System.out.println("The customer ID entered does not exist");
-					} else {
-						System.out.println("Invalid option");
+					} else if (adMenu == 2) {
+						int manageOption = Helper.readInt("Enter option 1(Add) or 2(Delete) > ");
 
+						if (manageOption == 1) {
+							String packageCode = Helper.readString("Enter package code > ");
+							String packageDescription = Helper.readString("Enter package description > ");
+							String packageStartDate = Helper.readString("Enter package start date > ");
+							String packageEndDate = Helper.readString("Enter package end date > ");
+							String packageAmount = Helper.readString("Enter package amount > ");
+
+						} else if (manageOption == 2) {
+
+						} else {
+							System.out.println("Invalid Option");
+						}
+
+					} else if (adMenu == 3) {
+						System.out.println("adMenu3");
+					} else if (adMenu == 4) {
+						System.out.println("adMenu4");
+					} else if (adMenu == 5) {
+						System.out.println("adMenu5");
+					} else {
+						System.out.println("Invalid options");
 					}
+
+
+				} else if (option == 4) {
+					System.out.println("Thank you for using RENOVATION ACE!");
 
 				} else if (adMenu == 2) {
-					int manageOption = Helper.readInt("Enter option 1(Add) or 2(Delete) > ");
+					System.out.println("1. Add package");
+					System.out.println("2. Delete package");
+					int manageOption = Helper.readInt("Enter option > ");
 
 					if (manageOption == 1) {
 						String packageCode = Helper.readString("Enter package code > ");
 						String packageDescription = Helper.readString("Enter package description > ");
 						String packageStartDate = Helper.readString("Enter package start date > ");
 						String packageEndDate = Helper.readString("Enter package end date > ");
-						String packageAmount = Helper.readString("Enter package amount > ");
+						int packageAmount = Helper.readInt("Enter package amount > ");
+						
+						packageList.add(new Package(packageCode, packageDescription , packageStartDate , packageEndDate , packageAmount));
+						System.out.println("Package Added! ");
 
 					} else if (manageOption == 2) {
+						String deletePackage = Helper.readString("Enter package code to delete package  > ");
+						boolean packageFound = false;
+						
+						for (int i = 0; i < packageList.size(); i++) {
+							if (deletePackage.equals(packageList.get(i).getPackageCode())) {
+								System.out.println("Package Deleted");
+								packageList.remove(i);
+								packageFound = true; 
+							}
+						}
+						if (packageFound == false) {
+							System.out.println("Invalid package code");
+						}
 
 					} else {
 						System.out.println("Invalid Option");
@@ -155,18 +199,13 @@ public class C206_CaseStudy {
 				} else if (adMenu == 5) {
 					System.out.println("adMenu5");
 				} else {
-					System.out.println("Invalid options");
+					System.out.println("Invalid option!");
 				}
-
-			} else if (option == 4) {
-				System.out.println("Thank you for using RENOVATION ACE!");
-			} else {
-				System.out.println("Invalid option!");
 			}
 			}
 		}
 
-	}
+	
 
 	public static void menu() {
 		C206_CaseStudy.setHeader("RENOVATION ACE APP");
@@ -231,9 +270,28 @@ public class C206_CaseStudy {
 		int roomRenovationAmount = Helper.readInt("Enter number of room to renovate: ");
 		int toiletRenovationAmount = Helper.readInt("Enter number of toilets to renovate");
 		String renovationString = Helper.readString("Enter renovation style: ");
+<<<<<<< HEAD
 
+=======
+
+		boolean isUrgent = false;
+=======
+<<<<<<< HEAD
+		boolean isUrgent = false;
+
+>>>>>>> branch 'master' of https://github.com/mezbez/C206_CaseStudy.git
 		boolean isUrgent = Helper.readBoolean("Do you need it done within three months?");
+<<<<<<< HEAD
 		
+=======
+<<<<<<< HEAD
+
+=======
+>>>>>>> branch 'master' of https://github.com/mezbez/C206_ESE_CaseStudy.git
+		
+>>>>>>> branch 'master' of https://github.com/mezbez/C206_ESE_CaseStudy.git
+>>>>>>> branch 'master' of https://github.com/mezbez/C206_ESE_CaseStudy.git
+>>>>>>> branch 'master' of https://github.com/mezbez/C206_CaseStudy.git
 		Request r = new Request(quotationID, propertyType, areaSize, requestName, contactNo, emailAddress, budgetAmount,
 				targetCompletionDate, renovationType, roomRenovationAmount, toiletRenovationAmount, renovationString,
 				isUrgent);
@@ -260,5 +318,23 @@ public class C206_CaseStudy {
 		output += retrieveAllCustomer(customerList);
 		System.out.println(output);
 
+	}
+
+	public static Customer inputCustomer() {
+		int ID = Helper.readInt("Enter new ID > ");
+		String Name = Helper.readString("Enter new customer name");
+		int Number = Helper.readInt("Enter customer phone number");
+		String email = Helper.readString("Enter customer email (example@example.com)");
+		String status = "new";
+
+		Customer CU = new Customer(ID, Name, Number, email, status);
+		return CU;
+
+	}
+
+	public static void addCustomer(ArrayList<Customer> customerList, Customer CU) {
+
+		customerList.add(CU);
+		System.out.println("Customer Added! ");
 	}
 }
