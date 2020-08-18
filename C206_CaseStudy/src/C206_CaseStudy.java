@@ -139,16 +139,16 @@ public class C206_CaseStudy {
 
 					} else if (manageOption == 2) {
 						String deletePackage = Helper.readString("Enter package code to delete package  > ");
-						boolean isFound = false;
+						boolean packageFound = false;
 						
 						for (int i = 0; i < packageList.size(); i++) {
 							if (deletePackage.equals(packageList.get(i).getPackageCode())) {
 								System.out.println("Package Deleted");
 								packageList.remove(i);
-								isFound = true;
+								packageFound = true;
 							}
 						}
-						if (isFound == false) {
+						if (packageFound == false) {
 							System.out.println("Invalid package code");
 						}
 
