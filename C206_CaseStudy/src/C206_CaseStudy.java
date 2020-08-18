@@ -230,8 +230,13 @@ public class C206_CaseStudy {
 		int roomRenovationAmount = Helper.readInt("Enter number of room to renovate: ");
 		int toiletRenovationAmount = Helper.readInt("Enter number of toilets to renovate");
 		String renovationString = Helper.readString("Enter renovation style: ");
+<<<<<<< HEAD
 		boolean isUrgent = false;
 
+=======
+		boolean isUrgent = Helper.readBoolean("Do you need it done within three months?");
+		
+>>>>>>> branch 'master' of https://github.com/mezbez/C206_ESE_CaseStudy.git
 		Request r = new Request(quotationID, propertyType, areaSize, requestName, contactNo, emailAddress, budgetAmount,
 				targetCompletionDate, renovationType, roomRenovationAmount, toiletRenovationAmount, renovationString,
 				isUrgent);

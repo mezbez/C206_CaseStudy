@@ -72,6 +72,13 @@ public class C206_CaseStudyTest {
 		assertNotNull("Paging for ArrayList to add UserAccounts to", userAccountList);
 		assertNotNull("Paging for ArrayList to add AppointmentLists to", appointmentList);
 		
+		//Let's try to retrieve nothing from the ArrayLists!
+		//String allRequests = C206_CaseStudy.retrieveAllRequests(requestList);
+		//String allCustomers = C206_CaseStudy.retrieveAllCustomers(customerList);
+		//String allPackages = C206_CaseStudy.retrieveAllPackages(packageList);
+		//String allUserAccounts = C206_CaseStudy.retrieveAllUserAccounts(userAccountList);
+		//String allAppointments = C206_CaseStudy.retrieveAllAppointments(appointmentList);
+		
 		//Let's add an item and see if they have one item in them! (Kind of obvious in real life, but hey)
 		//C206_CaseStudy.addRequest(requestList, request01);
 		//C206_CaseStudy.addRequest(customerList, customer01);
