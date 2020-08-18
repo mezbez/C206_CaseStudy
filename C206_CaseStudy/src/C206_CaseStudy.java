@@ -21,7 +21,7 @@ public class C206_CaseStudy {
 			option = Helper.readInt("Enter an option > ");
 
 			if (option == 1) {
-				System.out.println("Dk what to put in yet");
+				
 			} else if (option == 2) {
 				C206_CaseStudy.showMenuCustomer();
 				int customerMenu = Helper.readInt("Enter an option which suits your needs: ");
