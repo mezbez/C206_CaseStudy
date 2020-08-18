@@ -154,10 +154,9 @@ public class C206_CaseStudy {
 						System.out.println("Invalid options");
 					}
 
-<<<<<<< HEAD
 				} else if (option == 4) {
 					System.out.println("Thank you for using RENOVATION ACE!");
-=======
+
 				} else if (adMenu == 2) {
 					System.out.println("1. Add package");
 					System.out.println("2. Delete package");
@@ -169,19 +168,20 @@ public class C206_CaseStudy {
 						String packageStartDate = Helper.readString("Enter package start date > ");
 						String packageEndDate = Helper.readString("Enter package end date > ");
 						int packageAmount = Helper.readInt("Enter package amount > ");
-						
-						packageList.add(new Package(packageCode, packageDescription , packageStartDate , packageEndDate , packageAmount));
+
+						packageList.add(new Package(packageCode, packageDescription, packageStartDate, packageEndDate,
+								packageAmount));
 						System.out.println("Package Added! ");
 
 					} else if (manageOption == 2) {
 						String deletePackage = Helper.readString("Enter package code to delete package  > ");
 						boolean packageFound = false;
-						
+
 						for (int i = 0; i < packageList.size(); i++) {
 							if (deletePackage.equals(packageList.get(i).getPackageCode())) {
 								System.out.println("Package Deleted");
 								packageList.remove(i);
-								packageFound = true; 
+								packageFound = true;
 							}
 						}
 						if (packageFound == false) {
@@ -198,7 +198,6 @@ public class C206_CaseStudy {
 					System.out.println("adMenu4");
 				} else if (adMenu == 5) {
 					System.out.println("adMenu5");
->>>>>>> branch 'master' of https://github.com/mezbez/C206_ESE_CaseStudy.git
 				} else {
 					System.out.println("Invalid option!");
 				}
@@ -206,7 +205,9 @@ public class C206_CaseStudy {
 		}
 
 	}
+
 }
+
 	public static void menu() {
 		C206_CaseStudy.setHeader("RENOVATION ACE APP");
 		System.out.println("1. View as a Visitor");
@@ -272,18 +273,11 @@ public class C206_CaseStudy {
 		String renovationString = Helper.readString("Enter renovation style: ");
 
 		boolean isUrgent = false;
-=======
-<<<<<<< HEAD
+
 		boolean isUrgent = false;
 
 		boolean isUrgent = Helper.readBoolean("Do you need it done within three months?");
-<<<<<<< HEAD
 
-=======
->>>>>>> branch 'master' of https://github.com/mezbez/C206_ESE_CaseStudy.git
-		
->>>>>>> branch 'master' of https://github.com/mezbez/C206_ESE_CaseStudy.git
->>>>>>> branch 'master' of https://github.com/mezbez/C206_ESE_CaseStudy.git
 		Request r = new Request(quotationID, propertyType, areaSize, requestName, contactNo, emailAddress, budgetAmount,
 				targetCompletionDate, renovationType, roomRenovationAmount, toiletRenovationAmount, renovationString,
 				isUrgent);
