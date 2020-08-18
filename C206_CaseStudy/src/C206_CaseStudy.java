@@ -79,7 +79,7 @@ public class C206_CaseStudy
 		System.out.println("1. Manage Customer");
 		System.out.println("2. Manage Appointment");
 		
-		int adminOption = Helper.readInt("Enter option to select manage type > ");
+		int adminOption = Helper.readInt("Enter option > ");
 
 		if (adminOption == 1) {
 			
