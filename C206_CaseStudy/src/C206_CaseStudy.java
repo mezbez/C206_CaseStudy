@@ -13,6 +13,25 @@ public class C206_CaseStudy
 			
 			if (option == 1)
 			{
+				C206_CaseStudy.showMenuCustomer();
+				int customerMenu = Helper.readInt("Enter an option which suits your needs: ");
+				
+				if (customerMenu == 1)
+				{
+					
+				}
+				else if (customerMenu == 2)
+				{
+					
+				}
+				else
+				{
+					System.out.println("Invalid option");
+				}
+			}
+			else if(option == 2)
+			{
+				
 				
 			}
 		}
@@ -39,6 +58,15 @@ public class C206_CaseStudy
 	
 	public static void showMenuCustomer()
 	{
-		
+		C206_CaseStudy.setHeader("Customer");
+		System.out.println("1. Request for Quotation");
+		System.out.println("2. Manage Appointment");
+	}
+	
+	public static void showMenuAD()
+	{
+		C206_CaseStudy.setHeader("Customer");
+		System.out.println("1. Manage Customer");
+		System.out.println("2. Manage Appointment");
 	}
 }
