@@ -5,6 +5,13 @@ public class C206_CaseStudy {
 		// TODO Auto-generated method stub
 
 		ArrayList<Request> requestList = new ArrayList<Request>();
+
+		//Request request01 = new Request("R0001", "HDB", 500, "How to Build an Atomic Bomb", 99999999,
+				//"no@thisisnotanemail.con", 50000, "31-FEBRUARY-2021", "Whole House", 3, 2, "Gangnam Style", true);
+		//Request request02 = new Request("R0002", "Landed Property", 1000, "How to go to the toilet", 88888888,
+				//"yes@thisisan.email", 99999, "31-SEPTEMBER-9999", "1 Bedroom", 3, 2, "Future Style", false);
+
+
 		ArrayList<Customer> customerList = new ArrayList<Customer>();
 		ArrayList<Package> packageList = new ArrayList<Package>();
 		ArrayList<userAccount> userAccountList = new ArrayList<userAccount>();
@@ -31,8 +38,10 @@ public class C206_CaseStudy {
 		Appointment appointment02 = new Appointment("31-December-9999", "11:59PM", "Block 229 Roxley Road", "AP0002");
 		Appointment appointment03 = new Appointment("1-January-2000", "11:60PM", "Block 229 Roxley Road", "AP0003");;
 		
+
 		requestList.add(request01);
 		requestList.add(request02);
+
 		requestList.add(request03);
 		
 		customerList.add(customer01);
@@ -52,6 +61,7 @@ public class C206_CaseStudy {
 		appointmentList.add(appointment02);
 		appointmentList.add(appointment03);
 		
+
 		int option = 0;
 
 		while (option != 3) {
@@ -75,7 +85,7 @@ public class C206_CaseStudy {
 
 				if (adMenu == 1) {
 					System.out.println("adMenu1");
-					
+
 				} else if (adMenu == 2) {
 					System.out.println("adMenu2");
 				} else if (adMenu == 3) {
