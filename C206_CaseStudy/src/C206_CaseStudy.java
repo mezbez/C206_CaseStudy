@@ -14,22 +14,26 @@ public class C206_CaseStudy {
 		
 		int option = 0;
 
-		while (option != 3) {
+		while (option != 4) {
 			C206_CaseStudy.menu();
 			option = Helper.readInt("Enter an option > ");
 
 			if (option == 1) {
+				System.out.println("Dk what to put in yet");
+			} else if (option == 2) {
 				C206_CaseStudy.showMenuCustomer();
 				int customerMenu = Helper.readInt("Enter an option which suits your needs: ");
 
 				if (customerMenu == 1) {
-					System.out.println("customerMenu1");
+					
 				} else if (customerMenu == 2) {
+					System.out.println("customerMenu1");
+				} else if (customerMenu == 3) {
 					System.out.println("customerMenu2");
 				} else {
 					System.out.println("Invalid option");
 				}
-			} else if (option == 2) {
+			} else if (option == 3) {
 				C206_CaseStudy.showMenuAD();
 				int adMenu = Helper.readInt("Enter an option which suit your needs: ");
 
@@ -47,9 +51,8 @@ public class C206_CaseStudy {
 					System.out.println("Invalid options");
 				}
 
-			} else if (option == 3) {
+			} else if (option == 4){
 				System.out.println("Thank you for using RENOVATION ACE!");
-
 			} else {
 				System.out.println("Invalid option!");
 			}
@@ -58,9 +61,10 @@ public class C206_CaseStudy {
 
 	public static void menu() {
 		C206_CaseStudy.setHeader("RENOVATION ACE APP");
-		System.out.println("1. Login as Customer");
-		System.out.println("2. Login as Admin/Designers");
-		System.out.println("3. Exit");
+		System.out.println("1. View as a Visitor");
+		System.out.println("2. Login as Customer");
+		System.out.println("3. Login as Admin/Designers");
+		System.out.println("4. Exit");
 		Helper.line(80, "-");
 	}
 
@@ -73,8 +77,9 @@ public class C206_CaseStudy {
 
 	public static void showMenuCustomer() {
 		C206_CaseStudy.setHeader("Customer");
-		System.out.println("1. Request for Quotation");
-		System.out.println("2. Manage Appointment");
+		System.out.println("1. Register");
+		System.out.println("2. Request for Quotation");
+		System.out.println("3. Manage Appointment");
 	}
 
 	public static void showMenuAD() {
@@ -84,5 +89,34 @@ public class C206_CaseStudy {
 		System.out.println("3. Manage Request for Quotation");
 		System.out.println("4. Manage Quotation");
 		System.out.println("5. Manage Appointment");
+	}
+	
+	//==========Add Customer Details========
+	public static Request requestQuotation()
+	{
+		String quotationID = Helper.readString("Enter quotation ID: ");
+		String propertyType = Helper.readString("Enter property type(HDB,Private,Landed):");
+		int areaSize = Helper.readInt("Enter area size: ");
+		String requestName = Helper.readString("Enter request name: ");
+		int contactNo = Helper.readInt("Enter Contact Number: ");
+		String emailAddress = Helper.readString("Enter email Address: ");
+		int budgetAmount = Helper.readInt("Enter your budget: ");
+		String targetCompletionDate = Helper.readString("Enter the targeted completion date: ");
+		String renovationType = Helper.readString("Enter renovation type (whole house, room, kitchen, toilet)");
+		int roomRenovationAmount = Helper.readInt("Enter number of room to renovate: ");
+		int toiletRenovationAmount = Helper.readInt("Enter number of toilets to renovate");
+		String renovationString = Helper.readString("Enter renovation style: ");
+		boolean isUrgent = false;
+		
+		Request r = new Request(quotationID, propertyType, areaSize, requestName, contactNo, emailAddress, budgetAmount,
+				targetCompletionDate, renovationType, roomRenovationAmount, toiletRenovationAmount,renovationString, isUrgent);
+		return r;
+	}
+
+	
+	public static void addQuotation(ArrayList<Request> requestList, Request r)
+	{
+		requestList.add(r);
+		System.out.println("New quotation added!");
 	}
 }
