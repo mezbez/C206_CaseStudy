@@ -1,12 +1,12 @@
 
 public class Customer {
-	private String customerID;
+	private int customerID;
 	private String customerName;
 	private int contactNumber;
 	private String emailAddress;
 	private String customerStatus;
 
-	public Customer(String customerID, String customerName, int contactNumber, String emailAddress,
+	public Customer(int customerID, String customerName, int contactNumber, String emailAddress,
 			String customerStatus) {
 		this.customerID = customerID;
 		this.customerName = customerName;
@@ -15,7 +15,7 @@ public class Customer {
 		this.customerStatus = "New";
 	}
 
-	public String getCustomerID() {
+	public int getCustomerID() {
 		return customerID;
 	}
 
@@ -37,6 +37,14 @@ public class Customer {
 
 	public void setCustomerStatus(String newCustomerStatus) {
 		this.customerStatus = newCustomerStatus;
+	}
+
+	public void display() {
+		System.out.println("Customer ID: " + customerID);
+		System.out.println("Customer Name: " + customerName);
+		System.out.println("Contact number: " + contactNumber);
+		System.out.println("Email Address: " + emailAddress);
+		System.out.println("Customer status: " + customerStatus);
 	}
 
 }
