@@ -138,6 +138,19 @@ public class C206_CaseStudy {
 						System.out.println("Package Added! ");
 
 					} else if (manageOption == 2) {
+						String deletePackage = Helper.readString("Enter package code to delete package  > ");
+						boolean isFound = false;
+						
+						for (int i = 0; i < packageList.size(); i++) {
+							if (deletePackage.equals(packageList.get(i).getPackageCode())) {
+								System.out.println("Package Deleted");
+								packageList.remove(i);
+								isFound = true;
+							}
+						}
+						if (isFound == false) {
+							System.out.println("Invalid package code");
+						}
 
 					} else {
 						System.out.println("Invalid Option");
@@ -226,7 +239,7 @@ public class C206_CaseStudy {
 		int roomRenovationAmount = Helper.readInt("Enter number of room to renovate: ");
 		int toiletRenovationAmount = Helper.readInt("Enter number of toilets to renovate");
 		String renovationString = Helper.readString("Enter renovation style: ");
-		boolean isUrgent = Helper.readBoolean("Do you need it done within three months?");
+		boolean isUrgent = false;
 		
 		Request r = new Request(quotationID, propertyType, areaSize, requestName, contactNo, emailAddress, budgetAmount,
 				targetCompletionDate, renovationType, roomRenovationAmount, toiletRenovationAmount,renovationString, isUrgent);
