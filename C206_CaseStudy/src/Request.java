@@ -1,5 +1,6 @@
 
 public class Request {
+	private String quotationID;
 	private String propertyType;
 	private int areaSize;
 	private String requestName;
@@ -13,9 +14,10 @@ public class Request {
 	private String renovationString;
 	private boolean isUrgent;
 
-	public Request(String propertyType, int areaSize, String requestName, int contactNo, String emailAddress,
+	public Request(String quotationID, String propertyType, int areaSize, String requestName, int contactNo, String emailAddress,
 			int budgetAmount, String targetCompletionDate, String renovationType, int roomRenovationAmount,
 			int toiletRenovationAmount, String renovationString, boolean isUrgent) {
+		this.quotationID = quotationID;
 		this.propertyType = propertyType;
 		this.areaSize = areaSize;
 		this.requestName = requestName;
@@ -29,7 +31,7 @@ public class Request {
 		this.renovationString = renovationString;
 		this.isUrgent = isUrgent;
 	}
-
+	
 	public int getAreaSize() {
 		return areaSize;
 	}
