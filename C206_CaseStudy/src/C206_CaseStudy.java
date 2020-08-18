@@ -5,13 +5,15 @@ public class C206_CaseStudy {
 		// TODO Auto-generated method stub
 
 		ArrayList<Request> requestList = new ArrayList<Request>();
-		
-		Request request01 = new Request("R0001", "HDB", 500, "How to Build an Atomic Bomb", 99999999, "no@thisisnotanemail.con", 50000, "31-FEBRUARY-2021", "Whole House", 3, 2, "Gangnam Style", true);
-		Request request02 = new Request("R0002", "Landed Property", 1000, "How to go to the toilet", 88888888, "yes@thisisan.email", 99999, "31-SEPTEMBER-9999", "1 Bedroom", 3, 2, "Future Style", false);
-		
+
+		Request request01 = new Request("R0001", "HDB", 500, "How to Build an Atomic Bomb", 99999999,
+				"no@thisisnotanemail.con", 50000, "31-FEBRUARY-2021", "Whole House", 3, 2, "Gangnam Style", true);
+		Request request02 = new Request("R0002", "Landed Property", 1000, "How to go to the toilet", 88888888,
+				"yes@thisisan.email", 99999, "31-SEPTEMBER-9999", "1 Bedroom", 3, 2, "Future Style", false);
+
 		requestList.add(request01);
 		requestList.add(request02);
-		
+
 		int option = 0;
 
 		while (option != 3) {
@@ -35,7 +37,7 @@ public class C206_CaseStudy {
 
 				if (adMenu == 1) {
 					System.out.println("adMenu1");
-					
+
 				} else if (adMenu == 2) {
 					System.out.println("adMenu2");
 				} else if (adMenu == 3) {
