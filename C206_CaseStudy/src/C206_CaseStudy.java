@@ -37,9 +37,11 @@ public class C206_CaseStudy {
 					System.out.println("Invalid options");
 				}
 
-			} else {
+			} else if (option == 3) {
 				System.out.println("Thank you for using RENOVATION ACE!");
 
+			} else {
+				System.out.println("Invalid option!");
 			}
 		}
 	}
@@ -62,7 +64,7 @@ public class C206_CaseStudy {
 	public static void showMenuCustomer() {
 		C206_CaseStudy.setHeader("Customer");
 		System.out.println("1. Request for Quotation");
-		System.out.println("2. Manage Appointment");s
+		System.out.println("2. Manage Appointment");
 	}
 
 	public static void showMenuAD() {
