@@ -58,10 +58,8 @@ public class C206_CaseStudy {
 
 		appointmentList.add(appointment01);
 		appointmentList.add(appointment02);
-
 		appointmentList.add(appointment03);
 
-		appointmentList.add(appointment03);
 
 		int option = 0;
 
@@ -126,38 +124,8 @@ public class C206_CaseStudy {
 							System.out.println("The customer ID entered does not exist");
 						} else {
 							System.out.println("Invalid option");
-
 						}
-
-					} else if (adMenu == 2) {
-						int manageOption = Helper.readInt("Enter option 1(Add) or 2(Delete) > ");
-
-						if (manageOption == 1) {
-							String packageCode = Helper.readString("Enter package code > ");
-							String packageDescription = Helper.readString("Enter package description > ");
-							String packageStartDate = Helper.readString("Enter package start date > ");
-							String packageEndDate = Helper.readString("Enter package end date > ");
-							String packageAmount = Helper.readString("Enter package amount > ");
-
-						} else if (manageOption == 2) {
-
-						} else {
-							System.out.println("Invalid Option");
-						}
-
-					} else if (adMenu == 3) {
-						System.out.println("adMenu3");
-					} else if (adMenu == 4) {
-						System.out.println("adMenu4");
-					} else if (adMenu == 5) {
-						System.out.println("adMenu5");
-					} else {
-						System.out.println("Invalid options");
 					}
-
-				} else if (option == 4) {
-					System.out.println("Thank you for using RENOVATION ACE!");
-
 				} else if (adMenu == 2) {
 					System.out.println("1. Add package");
 					System.out.println("2. Delete package");
@@ -200,6 +168,9 @@ public class C206_CaseStudy {
 				} else {
 					System.out.println("Invalid option!");
 				}
+				
+			} else if (option == 4) {
+				System.out.println("Thank you for using RENOVATION ACE!");
 			}
 		}
 
