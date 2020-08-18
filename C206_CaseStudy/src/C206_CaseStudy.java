@@ -35,6 +35,7 @@ public class C206_CaseStudy {
 
 				if (adMenu == 1) {
 					System.out.println("adMenu1");
+					
 				} else if (adMenu == 2) {
 					System.out.println("adMenu2");
 				} else if (adMenu == 3) {
