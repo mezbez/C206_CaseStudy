@@ -10,7 +10,7 @@ public class Customer {
 		this.customerName = customerName;
 		this.contactNumber = contactNumber;
 		this.emailAddress = emailAddress;
-		this.customerStatus = customerStatus;
+		this.customerStatus = "New";
 	}
 	
 	public String getCustomerName()
