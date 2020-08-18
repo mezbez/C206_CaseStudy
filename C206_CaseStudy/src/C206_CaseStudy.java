@@ -43,14 +43,6 @@ public class C206_CaseStudy {
 			} else {
 				System.out.println("Invalid option!");
 			}
-			else if(option == 3)
-			{
-				System.out.println("Thank you for using Reonvation ACE!!!");
-			}
-			else
-			{
-				System.out.println("Invalid option");
-			}
 		}
 	}
 
