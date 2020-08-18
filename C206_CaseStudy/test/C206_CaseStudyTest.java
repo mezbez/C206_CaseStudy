@@ -39,9 +39,9 @@ public class C206_CaseStudyTest {
 		Request request02 = new Request("RE0002", "Landed Property", 1000, "RequestName02", 88888888, "yes@thisisan.email", 99999, "31-SEPTEMBER-9999", "1 Bedroom", 1, 0, "Future Style", false);
 		Request request03 = new Request("RE0003", "Condominium", 750, "RequestName03", 11111111, "maybe@thiscouldbean.email", 1, "1-JANUARY-0000", "1 Toilet", 0, 1, "Beyond of Style", true);
 		
-		Customer customer01 = new Customer("CU0001", "Din Tai Fung", 98888888, "dtf@uhh.com", "New");
-		Customer customer02 = new Customer("CU0002", "East Coast Plan", 89999999, "wardrobe@tri.vago", "New");
-		Customer customer03 = new Customer("CU0003", "Cockles of Heart", 10000000, "yes@okay.uhhuh", "New");
+		Customer customer01 = new Customer(0001, "Din Tai Fung", 98888888, "dtf@uhh.com", "New");
+		Customer customer02 = new Customer(0002, "East Coast Plan", 89999999, "wardrobe@tri.vago", "New");
+		Customer customer03 = new Customer(0003, "Cockles of Heart", 10000000, "yes@okay.uhhuh", "New");
 		
 		Package package01 = new Package("PA0001", "This package packages packages into a package.", "21-January-2021", "29-January-2021", 2);
 		Package package02 = new Package("PA0002", "This package packages packages into a package.", "30-December-9999", "31-December-9999", 2);
