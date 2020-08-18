@@ -5,6 +5,8 @@ public class C206_CaseStudy {
 		// TODO Auto-generated method stub
 
 		ArrayList<Request> requestList = new ArrayList<Request>();
+		ArrayList<Customer> customerList = new ArrayList<Customer>();
+		
 		
 		Request request01 = new Request("HDB", 500, "How to Build an Atomic Bomb", 99999999, "no@thisisnotanemail.con", 50000, "31-FEBRUARY-2021", "Whole House", 3, 2, "Gangnam Style", true);
 		Request request02 = new Request("Landed Property", 1000, "How to go to the toilet", 88888888, "yes@thisisan.email", 99999, "31-SEPTEMBER-9999", "1 Bedroom", 3, 2, "Future Style", false);
@@ -25,7 +27,9 @@ public class C206_CaseStudy {
 				int customerMenu = Helper.readInt("Enter an option which suits your needs: ");
 
 				if (customerMenu == 1) {
-					
+					//Register Customer
+					Customer cus = inputCustomer();
+					C206_CaseStudy.addCustomer(customerList, cus);
 				} else if (customerMenu == 2) {
 					System.out.println("customerMenu1");
 				} else if (customerMenu == 3) {
@@ -89,6 +93,24 @@ public class C206_CaseStudy {
 		System.out.println("3. Manage Request for Quotation");
 		System.out.println("4. Manage Quotation");
 		System.out.println("5. Manage Appointment");
+	}
+	//===========Register Customer==========
+	public static Customer inputCustomer()
+	{
+		String customerID = Helper.readString("Enter customer ID: ");
+		String customerName = Helper.readString("Enter your name: ");
+		int contactNumber = Helper.readInt("Enter your contact number: ");
+		String emailAddress = Helper.readString("Enter your email address: ");
+		String customerStatus = "New";
+		
+		Customer cus = new Customer(customerID, customerName, contactNumber, emailAddress, customerStatus);
+		return cus;
+	}
+	
+	public static void addCustomer(ArrayList<Customer> customerList, Customer cus)
+	{
+		customerList.add(cus);
+		System.out.println("Customer added!");
 	}
 	
 	//==========Add Customer Details========
