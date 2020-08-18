@@ -1,15 +1,18 @@
 import java.util.ArrayList;
 
 public class C206_CaseStudy {
+	private static final String theOtherFormat = "%-10d %-30s %-10d %-10s %-20s\n";
+
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
 		ArrayList<Request> requestList = new ArrayList<Request>();
 
-		ArrayList<Customer> customerList = new ArrayList<Customer>();
 
+		ArrayList<Customer> customerList = new ArrayList<Customer>();
 		ArrayList<Package> packageList = new ArrayList<Package>();
 		ArrayList<userAccount> userAccountList = new ArrayList<userAccount>();
+
 
 		ArrayList<Appointment> appointmentList = new ArrayList<Appointment>();
 		
@@ -67,19 +70,22 @@ public class C206_CaseStudy {
 			option = Helper.readInt("Enter an option > ");
 
 			if (option == 1) {
-				
+
 			} else if (option == 2) {
 				C206_CaseStudy.showMenuCustomer();
 				int customerMenu = Helper.readInt("Enter an option which suits your needs: ");
 
 				if (customerMenu == 1) {
-					//Register Customer
+					// Register Customer
 					Customer cus = inputCustomer();
 					C206_CaseStudy.addCustomer(customerList, cus);
 				} else if (customerMenu == 2) {
-					System.out.println("customerMenu1");
+					//Request for Quotation
+					Request r = requestQuotation();
+					C206_CaseStudy.addQuotation(requestList, r);
+					
 				} else if (customerMenu == 3) {
-					System.out.println("customerMenu2");
+					//Manage Appointment
 				} else {
 					System.out.println("Invalid option");
 				}
@@ -104,27 +110,25 @@ public class C206_CaseStudy {
 						System.out.println("Customer Added! ");
 					} else if (choices == 2) {
 						System.out.println("View all Customer");
-						for (int i = 0; i < customerList.size(); i++) {
-							customerList.get(i).display();
+						C206_CaseStudy.retrieveAllCustomer(customerList);
+					}else if (choices == 3) {
+					System.out.println("Delete Customer");
+					int cID = Helper.readInt("Enter customer ID > ");
+					boolean isFound = false;
 
+					for (int i = 0; i < customerList.size(); i++) {
+						if (cID == customerList.get(i).getCustomerID()) {
+							System.out.println(customerList.get(i).getCustomerName() + "deleted ! ");
+
+							customerList.remove(i);
+							isFound = true;
 						}
-					} else if (choices == 3) {
-						System.out.println("Delete Customer");
-						int cID = Helper.readInt("Enter customer ID > ");
-						boolean isFound = false;
 
-						for (int i = 0; i < customerList.size(); i++) {
-							if (cID == customerList.get(i).getCustomerID()) {
-								System.out.println(customerList.get(i).getCustomerName() + "deleted ! ");
-
-								customerList.remove(i);
-								isFound = true;
-							}
-
-						}
-						if (isFound == false) {
-							System.out.println("The customer ID entered does not exist");
-						}
+					}
+					if (isFound == false) {
+						System.out.println("The customer ID entered does not exist");
+					} else {
+						System.out.println("Invalid option");
 
 					}
 
@@ -154,12 +158,14 @@ public class C206_CaseStudy {
 					System.out.println("Invalid options");
 				}
 
-			} else if (option == 4){
+			} else if (option == 4) {
 				System.out.println("Thank you for using RENOVATION ACE!");
 			} else {
 				System.out.println("Invalid option!");
 			}
+			}
 		}
+
 	}
 
 	public static void menu() {
@@ -181,7 +187,7 @@ public class C206_CaseStudy {
 	public static void showMenuCustomer() {
 		C206_CaseStudy.setHeader("Customer");
 		System.out.println("1. Register");
-		System.out.println("2. Request for Quotation");
+		System.out.println("2. Add Quotation");
 		System.out.println("3. Manage Appointment");
 	}
 
@@ -193,28 +199,26 @@ public class C206_CaseStudy {
 		System.out.println("4. Manage Quotation");
 		System.out.println("5. Manage Appointment");
 	}
-	//===========Register Customer==========
-	public static Customer inputCustomer()
-	{
+
+	// ===========Register Customer==========
+	public static Customer inputCustomer() {
 		int customerID = Helper.readInt("Enter customer ID: ");
 		String customerName = Helper.readString("Enter your name: ");
 		int contactNumber = Helper.readInt("Enter your contact number: ");
 		String emailAddress = Helper.readString("Enter your email address: ");
 		String customerStatus = "New";
-		
+
 		Customer cus = new Customer(customerID, customerName, contactNumber, emailAddress, customerStatus);
 		return cus;
 	}
-	
-	public static void addCustomer(ArrayList<Customer> customerList, Customer cus)
-	{
+
+	public static void addCustomer(ArrayList<Customer> customerList, Customer cus) {
 		customerList.add(cus);
 		System.out.println("Customer added!");
 	}
-	
-	//==========Add Customer Details========
-	public static Request requestQuotation()
-	{
+
+	// ==========Requesting for Quotation========
+	public static Request requestQuotation() {
 		String quotationID = Helper.readString("Enter quotation ID: ");
 		String propertyType = Helper.readString("Enter property type(HDB,Private,Landed):");
 		int areaSize = Helper.readInt("Enter area size: ");
@@ -227,17 +231,34 @@ public class C206_CaseStudy {
 		int roomRenovationAmount = Helper.readInt("Enter number of room to renovate: ");
 		int toiletRenovationAmount = Helper.readInt("Enter number of toilets to renovate");
 		String renovationString = Helper.readString("Enter renovation style: ");
+
 		boolean isUrgent = Helper.readBoolean("Do you need it done within three months?");
 		
 		Request r = new Request(quotationID, propertyType, areaSize, requestName, contactNo, emailAddress, budgetAmount,
-				targetCompletionDate, renovationType, roomRenovationAmount, toiletRenovationAmount,renovationString, isUrgent);
+				targetCompletionDate, renovationType, roomRenovationAmount, toiletRenovationAmount, renovationString,
+				isUrgent);
 		return r;
 	}
 
-	
-	public static void addQuotation(ArrayList<Request> requestList, Request r)
-	{
+	public static void addQuotation(ArrayList<Request> requestList, Request r) {
 		requestList.add(r);
 		System.out.println("New quotation added!");
+	}
+
+	public static void retrieveAllCustomer(ArrayList<Customer> customerList) {
+		String output = "";
+		for (int i = 0; i < customerList.size(); i++) {
+			output += String.format("%-84s\n", customerList.get(i).toString());
+		}
+		System.out.println(output);
+
+	}
+
+	public static void viewAllCustomer(ArrayList<Customer> customerList) {
+		C206_CaseStudy.setHeader("CUSTOMER LIST");
+		String output = String.format(theOtherFormat, "ID", "NAME", "NUMBER", "EMAIL", "STATUS");
+		output += retrieveAllCustomer(customerList);
+		System.out.println(output);
+
 	}
 }
