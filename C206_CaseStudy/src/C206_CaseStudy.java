@@ -140,9 +140,21 @@ public class C206_CaseStudy {
 						String packageDescription = Helper.readString("Enter package description > ");
 						String packageStartDate = Helper.readString("Enter package start date > ");
 						String packageEndDate = Helper.readString("Enter package end date > ");
-						String packageAmount = Helper.readString("Enter package amount > ");
+						int packageAmount = Helper.readInt("Enter package amount > ");
+						Package packagetoAdd = new Package(packageCode, packageDescription, packageStartDate, packageEndDate, packageAmount);
+						packageList.add(packagetoAdd);
+						System.out.println("We've added your package for you!");
 
 					} else if (manageOption == 2) {
+						String packageCode = Helper.readString("Enter package code > ");
+						for (Package i : packageList)
+						{
+							if (i.getPackageCode().contentEquals(packageCode))
+							{
+								packageList.remove(i);
+							}
+						}
+					}
 
 					} else {
 						System.out.println("Invalid Option");
@@ -230,13 +242,7 @@ public class C206_CaseStudy {
 		int roomRenovationAmount = Helper.readInt("Enter number of room to renovate: ");
 		int toiletRenovationAmount = Helper.readInt("Enter number of toilets to renovate");
 		String renovationString = Helper.readString("Enter renovation style: ");
-<<<<<<< HEAD
-		boolean isUrgent = false;
-
-=======
 		boolean isUrgent = Helper.readBoolean("Do you need it done within three months?");
-		
->>>>>>> branch 'master' of https://github.com/mezbez/C206_ESE_CaseStudy.git
 		Request r = new Request(quotationID, propertyType, areaSize, requestName, contactNo, emailAddress, budgetAmount,
 				targetCompletionDate, renovationType, roomRenovationAmount, toiletRenovationAmount, renovationString,
 				isUrgent);
