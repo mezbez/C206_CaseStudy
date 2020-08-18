@@ -86,6 +86,7 @@ public class C206_CaseStudy {
 					
 				} else if (customerMenu == 3) {
 					//Manage Appointment
+					
 				} else {
 					System.out.println("Invalid option");
 				}
@@ -168,12 +169,20 @@ public class C206_CaseStudy {
 						String packageStartDate = Helper.readString("Enter package start date > ");
 						String packageEndDate = Helper.readString("Enter package end date > ");
 						int packageAmount = Helper.readInt("Enter package amount > ");
-
-						packageList.add(new Package(packageCode, packageDescription, packageStartDate, packageEndDate,
-								packageAmount));
-						System.out.println("Package Added! ");
+						Package packagetoAdd = new Package(packageCode, packageDescription, packageStartDate, packageEndDate, packageAmount);
+						packageList.add(packagetoAdd);
+						System.out.println("We've added your package for you!");
 
 					} else if (manageOption == 2) {
+						String packageCode = Helper.readString("Enter package code > ");
+						for (Package i : packageList)
+						{
+							if (i.getPackageCode().contentEquals(packageCode))
+							{
+								packageList.remove(i);
+							}
+						}
+					}
 						String deletePackage = Helper.readString("Enter package code to delete package  > ");
 						boolean packageFound = false;
 
@@ -186,9 +195,7 @@ public class C206_CaseStudy {
 						}
 						if (packageFound == false) {
 							System.out.println("Invalid package code");
-						}
-
-					} else {
+						} else {
 						System.out.println("Invalid Option");
 					}
 
@@ -203,8 +210,12 @@ public class C206_CaseStudy {
 					System.out.println("Invalid option!");
 				}
 			}
-			}
 		}
+<<<<<<< HEAD
+=======
+	}
+
+>>>>>>> branch 'master' of https://github.com/mezbez/C206_CaseStudy.git
 	public static void menu() {
 		C206_CaseStudy.setHeader("RENOVATION ACE APP");
 		System.out.println("1. View as a Visitor");
@@ -265,12 +276,19 @@ public class C206_CaseStudy {
 		int budgetAmount = Helper.readInt("Enter your budget: ");
 		String targetCompletionDate = Helper.readString("Enter the targeted completion date: ");
 		String renovationType = Helper.readString("Enter renovation type (whole house, room, kitchen, toilet)");
+<<<<<<< HEAD
 		int roomRenovationAmount = Helper.readInt("Enter number of room to renovate: ");
 		int toiletRenovationAmount = Helper.readInt("Enter number of toilets to renovate");
 		String renovationString = Helper.readString("Enter renovation style: ");
 
 		boolean isUrgent = Helper.readBoolean("Do you need it done within three months?");
 
+=======
+		int roomRenovationAmount = Helper.readInt("Enter number of room to renovate: ");
+		int toiletRenovationAmount = Helper.readInt("Enter number of toilets to renovate");
+		String renovationString = Helper.readString("Enter renovation style: ");
+		boolean isUrgent = Helper.readBoolean("Do you need it done within three months?");
+>>>>>>> branch 'master' of https://github.com/mezbez/C206_CaseStudy.git
 		Request r = new Request(quotationID, propertyType, areaSize, requestName, contactNo, emailAddress, budgetAmount,
 				targetCompletionDate, renovationType, roomRenovationAmount, toiletRenovationAmount, renovationString,
 				isUrgent);
@@ -297,23 +315,5 @@ public class C206_CaseStudy {
 		output += retrieveAllCustomer(customerList);
 		System.out.println(output);
 
-	}
-
-	public static Customer inputCustomer() {
-		int ID = Helper.readInt("Enter new ID > ");
-		String Name = Helper.readString("Enter new customer name");
-		int Number = Helper.readInt("Enter customer phone number");
-		String email = Helper.readString("Enter customer email (example@example.com)");
-		String status = "new";
-
-		Customer CU = new Customer(ID, Name, Number, email, status);
-		return CU;
-
-	}
-
-	public static void addCustomer(ArrayList<Customer> customerList, Customer CU) {
-
-		customerList.add(CU);
-		System.out.println("Customer Added! ");
 	}
 }
