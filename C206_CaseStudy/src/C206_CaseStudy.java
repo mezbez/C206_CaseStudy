@@ -274,41 +274,9 @@ public class C206_CaseStudy {
 		String targetCompletionDate = Helper.readString("Enter the targeted completion date: ");
 		String renovationType = Helper.readString("Enter renovation type (whole house, room, kitchen, toilet)");
 		int roomRenovationAmount = Helper.readInt("Enter number of room to renovate: ");
-<<<<<<< HEAD
 		int toiletRenovationAmount = Helper.readInt("Enter number of toilets to renovate");
 		String renovationString = Helper.readString("Enter renovation style: ");
 		boolean isUrgent = Helper.readBoolean("Do you need it done within three months?");
-=======
-		int toiletRenovationAmount = Helper.readInt("Enter number of toilets to renovate");
-		String renovationString = Helper.readString("Enter renovation style: ");
-<<<<<<< HEAD
-
-=======
-
-		boolean isUrgent = false;
-
-		boolean isUrgent = false;
-
->>>>>>> branch 'master' of https://github.com/mezbez/C206_CaseStudy.git
-		boolean isUrgent = Helper.readBoolean("Do you need it done within three months?");
-<<<<<<< HEAD
-<<<<<<< HEAD
-		
-=======
-<<<<<<< HEAD
-=======
->>>>>>> branch 'master' of https://github.com/mezbez/C206_CaseStudy.git
-
-<<<<<<< HEAD
-=======
->>>>>>> branch 'master' of https://github.com/mezbez/C206_ESE_CaseStudy.git
-		
->>>>>>> branch 'master' of https://github.com/mezbez/C206_ESE_CaseStudy.git
->>>>>>> branch 'master' of https://github.com/mezbez/C206_ESE_CaseStudy.git
->>>>>>> branch 'master' of https://github.com/mezbez/C206_CaseStudy.git
-=======
->>>>>>> branch 'master' of https://github.com/mezbez/C206_CaseStudy.git
->>>>>>> branch 'master' of https://github.com/mezbez/C206_ESE_CaseStudy.git
 		Request r = new Request(quotationID, propertyType, areaSize, requestName, contactNo, emailAddress, budgetAmount,
 				targetCompletionDate, renovationType, roomRenovationAmount, toiletRenovationAmount, renovationString,
 				isUrgent);
@@ -335,23 +303,5 @@ public class C206_CaseStudy {
 		output += retrieveAllCustomer(customerList);
 		System.out.println(output);
 
-	}
-
-	public static Customer inputCustomer() {
-		int ID = Helper.readInt("Enter new ID > ");
-		String Name = Helper.readString("Enter new customer name");
-		int Number = Helper.readInt("Enter customer phone number");
-		String email = Helper.readString("Enter customer email (example@example.com)");
-		String status = "new";
-
-		Customer CU = new Customer(ID, Name, Number, email, status);
-		return CU;
-
-	}
-
-	public static void addCustomer(ArrayList<Customer> customerList, Customer CU) {
-
-		customerList.add(CU);
-		System.out.println("Customer Added! ");
 	}
 }
