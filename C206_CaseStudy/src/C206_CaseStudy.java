@@ -1,7 +1,17 @@
+import java.util.ArrayList;
+
 public class C206_CaseStudy {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
+		ArrayList<Request> requestList = new ArrayList<Request>();
+		
+		Request request01 = new Request("HDB", 500, "How to Build an Atomic Bomb", 99999999, "no@thisisnotanemail.con", 50000, "31-FEBRUARY-2021", "Whole House", 3, 2, "Gangnam Style", true);
+		Request request02 = new Request("Landed Property", 1000, "How to go to the toilet", 88888888, "yes@thisisan.email", 99999, "31-SEPTEMBER-9999", "1 Bedroom", 3, 2, "Future Style", false);
+		
+		requestList.add(request01);
+		requestList.add(request02);
+		
 		int option = 0;
 
 		while (option != 3) {
