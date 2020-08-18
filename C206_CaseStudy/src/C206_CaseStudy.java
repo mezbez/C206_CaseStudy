@@ -59,7 +59,7 @@ public class C206_CaseStudy {
 		
 		appointmentList.add(appointment01);
 		appointmentList.add(appointment02);
-		appointmentList.add(appointment03);
+		appointmentList.add(appointment03); 
 		
 
 		int option = 0;
@@ -87,7 +87,16 @@ public class C206_CaseStudy {
 					System.out.println("adMenu1");
 
 				} else if (adMenu == 2) {
-					System.out.println("adMenu2");
+					int manageOption = Helper.readInt("Enter option 1(Add) or 2(Delete) > ");
+					
+					if (manageOption == 1) {
+						
+					} else if (manageOption == 2) {
+						
+					} else {
+						System.out.println("Invalid Option");
+					}
+					
 				} else if (adMenu == 3) {
 					System.out.println("adMenu3");
 				} else if (adMenu == 4) {
