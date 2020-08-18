@@ -77,8 +77,8 @@ public class C206_CaseStudy {
 
 				if (customerMenu == 1) {
 					// Register Customer
-					Customer cus = inputCustomer();
-					C206_CaseStudy.addCustomer(customerList, cus);
+					Customer cus = inputCust();
+					C206_CaseStudy.addCust(customerList, cus);
 				} else if (customerMenu == 2) {
 					//Request for Quotation
 					Request r = requestQuotation();
@@ -154,17 +154,9 @@ public class C206_CaseStudy {
 						System.out.println("Invalid options");
 					}
 
-<<<<<<< HEAD
-
-=======
->>>>>>> branch 'master' of https://github.com/mezbez/C206_CaseStudy.git
 				} else if (option == 4) {
 					System.out.println("Thank you for using RENOVATION ACE!");
-<<<<<<< HEAD
 
-=======
-
->>>>>>> branch 'master' of https://github.com/mezbez/C206_CaseStudy.git
 				} else if (adMenu == 2) {
 					System.out.println("1. Add package");
 					System.out.println("2. Delete package");
@@ -205,26 +197,14 @@ public class C206_CaseStudy {
 				} else if (adMenu == 4) {
 					System.out.println("adMenu4");
 				} else if (adMenu == 5) {
-<<<<<<< HEAD
 					System.out.println("adMenu5");
-=======
 					System.out.println("adMenu5");
->>>>>>> branch 'master' of https://github.com/mezbez/C206_CaseStudy.git
 				} else {
 					System.out.println("Invalid option!");
 				}
 			}
 			}
 		}
-
-<<<<<<< HEAD
-	
-=======
-	}
-
-}
->>>>>>> branch 'master' of https://github.com/mezbez/C206_CaseStudy.git
-
 	public static void menu() {
 		C206_CaseStudy.setHeader("RENOVATION ACE APP");
 		System.out.println("1. View as a Visitor");
@@ -257,8 +237,8 @@ public class C206_CaseStudy {
 		System.out.println("5. Manage Appointment");
 	}
 
-	// ===========Register Customer==========
-	public static Customer inputCustomer() {
+	// ===========Register Customer(CustomerMenu)==========
+	public static Customer inputCust() {
 		int customerID = Helper.readInt("Enter customer ID: ");
 		String customerName = Helper.readString("Enter your name: ");
 		int contactNumber = Helper.readInt("Enter your contact number: ");
@@ -269,12 +249,12 @@ public class C206_CaseStudy {
 		return cus;
 	}
 
-	public static void addCustomer(ArrayList<Customer> customerList, Customer cus) {
+	public static void addCust(ArrayList<Customer> customerList, Customer cus) {
 		customerList.add(cus);
 		System.out.println("Customer added!");
 	}
 
-	// ==========Requesting for Quotation========
+	// ==========Requesting for Quotation(CustomerMenu)========
 	public static Request requestQuotation() {
 		String quotationID = Helper.readString("Enter quotation ID: ");
 		String propertyType = Helper.readString("Enter property type(HDB,Private,Landed):");
@@ -288,33 +268,9 @@ public class C206_CaseStudy {
 		int roomRenovationAmount = Helper.readInt("Enter number of room to renovate: ");
 		int toiletRenovationAmount = Helper.readInt("Enter number of toilets to renovate");
 		String renovationString = Helper.readString("Enter renovation style: ");
-<<<<<<< HEAD
 
-=======
-
-		boolean isUrgent = false;
-
-		boolean isUrgent = false;
-
->>>>>>> branch 'master' of https://github.com/mezbez/C206_CaseStudy.git
 		boolean isUrgent = Helper.readBoolean("Do you need it done within three months?");
-<<<<<<< HEAD
-<<<<<<< HEAD
-		
-=======
-<<<<<<< HEAD
-=======
->>>>>>> branch 'master' of https://github.com/mezbez/C206_CaseStudy.git
 
-<<<<<<< HEAD
-=======
->>>>>>> branch 'master' of https://github.com/mezbez/C206_ESE_CaseStudy.git
-		
->>>>>>> branch 'master' of https://github.com/mezbez/C206_ESE_CaseStudy.git
->>>>>>> branch 'master' of https://github.com/mezbez/C206_ESE_CaseStudy.git
->>>>>>> branch 'master' of https://github.com/mezbez/C206_CaseStudy.git
-=======
->>>>>>> branch 'master' of https://github.com/mezbez/C206_CaseStudy.git
 		Request r = new Request(quotationID, propertyType, areaSize, requestName, contactNo, emailAddress, budgetAmount,
 				targetCompletionDate, renovationType, roomRenovationAmount, toiletRenovationAmount, renovationString,
 				isUrgent);
