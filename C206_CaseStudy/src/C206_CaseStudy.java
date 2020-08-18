@@ -61,6 +61,16 @@ public class C206_CaseStudy
 		C206_CaseStudy.setHeader("Customer");
 		System.out.println("1. Request for Quotation");
 		System.out.println("2. Manage Appointment");
+		
+		int customerOption = Helper.readInt("Enter option > ");
+		
+		if (customerOption == 1) {
+			
+		} else if (customerOption == 2) {
+			
+		} else {
+			System.out.println("Invalid option");
+		}
 	}
 	
 	public static void showMenuAD()
@@ -68,5 +78,15 @@ public class C206_CaseStudy
 		C206_CaseStudy.setHeader("Customer");
 		System.out.println("1. Manage Customer");
 		System.out.println("2. Manage Appointment");
+		
+		int adminOption = Helper.readInt("Enter option to select manage type > ");
+
+		if (adminOption == 1) {
+			
+		} else if (adminOption == 2) {
+			
+		} else {
+			System.out.println("Invalid type");
+		}
 	}
 }
