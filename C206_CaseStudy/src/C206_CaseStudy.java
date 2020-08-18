@@ -62,8 +62,7 @@ public class C206_CaseStudy {
 	public static void showMenuCustomer() {
 		C206_CaseStudy.setHeader("Customer");
 		System.out.println("1. Request for Quotation");
-		System.out.println("2. Manage Appointment");
-		System.out.println("3. End");
+		System.out.println("2. Manage Appointment");s
 	}
 
 	public static void showMenuAD() {

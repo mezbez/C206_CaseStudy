@@ -23,8 +23,5 @@ public class Appointment {
 	public String getAID() {
 		return AID;
 	}
-	
-	
-	
 
 }
