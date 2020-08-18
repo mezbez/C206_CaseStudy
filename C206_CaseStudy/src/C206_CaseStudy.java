@@ -174,15 +174,6 @@ public class C206_CaseStudy {
 						System.out.println("We've added your package for you!");
 
 					} else if (manageOption == 2) {
-						String packageCode = Helper.readString("Enter package code > ");
-						for (Package i : packageList)
-						{
-							if (i.getPackageCode().contentEquals(packageCode))
-							{
-								packageList.remove(i);
-							}
-						}
-					}
 						String deletePackage = Helper.readString("Enter package code to delete package  > ");
 						boolean packageFound = false;
 
@@ -197,8 +188,8 @@ public class C206_CaseStudy {
 							System.out.println("Invalid package code");
 						} else {
 						System.out.println("Invalid Option");
+						}
 					}
-
 				} else if (adMenu == 3) {
 					System.out.println("adMenu3");
 				} else if (adMenu == 4) {
