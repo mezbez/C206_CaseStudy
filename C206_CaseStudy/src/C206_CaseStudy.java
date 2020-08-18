@@ -227,7 +227,7 @@ public class C206_CaseStudy {
 		int roomRenovationAmount = Helper.readInt("Enter number of room to renovate: ");
 		int toiletRenovationAmount = Helper.readInt("Enter number of toilets to renovate");
 		String renovationString = Helper.readString("Enter renovation style: ");
-		boolean isUrgent = false;
+		boolean isUrgent = Helper.readBoolean("Do you need it done within three months?");
 		
 		Request r = new Request(quotationID, propertyType, areaSize, requestName, contactNo, emailAddress, budgetAmount,
 				targetCompletionDate, renovationType, roomRenovationAmount, toiletRenovationAmount,renovationString, isUrgent);
