@@ -55,16 +55,60 @@ public class C206_CaseStudyTest {
 		Appointment appointment01 = new Appointment("28-February-2021", "11:00AM", "Block 229 Roxley Road", "AP0001");
 		Appointment appointment02 = new Appointment("31-December-9999", "11:59PM", "Block 229 Roxley Road", "AP0002");
 		Appointment appointment03 = new Appointment("1-January-2000", "11:60PM", "Block 229 Roxley Road", "AP0003");
-	}
-
-	@After
-	public void tearDown() throws Exception {
+		
+		requestList = new ArrayList<Request>();
+		customerList = new ArrayList<Customer>();
+		packageList = new ArrayList<Package>();
+		userAccountList = new ArrayList<userAccount>();
+		appointmentList = new ArrayList<Appointment>();
 	}
 
 	@Test
 	public void c206_test() {
-		//fail("Not yet implemented"); 
+		//Let's see if we can add new entities to their respective ArrayLists!
+		assertNotNull("Paging for ArrayList to add Requests to", requestList);
+		assertNotNull("Paging for ArrayList to add Customers to", customerList);
+		assertNotNull("Paging for ArrayList to add Packages to", packageList);
+		assertNotNull("Paging for ArrayList to add UserAccounts to", userAccountList);
+		assertNotNull("Paging for ArrayList to add AppointmentLists to", appointmentList);
+		
+		//Let's add an item and see if they have one item in them! (Kind of obvious in real life, but hey)
+		//C206_CaseStudy.addRequest(requestList, request01);
+		//C206_CaseStudy.addRequest(customerList, customer01);
+		//C206_CaseStudy.addRequest(packageList, package01);
+		//C206_CaseStudy.addRequest(userAccountList, userAccount01);
+		//C206_CaseStudy.addRequest(appointmentList, appointment01);
+		//assertEquals("Paging for the size of ArrayList for Requests to be 1", 1, requestList.size());
+		//assertEquals("Paging for the size of ArrayList for Customers to be 1", 1, customerList.size());
+		//assertEquals("Paging for the size of ArrayList for Packages to be 1", 1, packageList.size());
+		//assertEquals("Paging for the size of ArrayList for UserAccounts to be 1", 1, userAccountList.size());
+		//assertEquals("Paging for the size of ArrayList for Appointments to be 1", 1, appointmentList.size());
+		
+		//Let's see if the item inside it is the same as what we just added!
+		//assertSame("Paging for ArrayList index 0 for Requests to be the same as item01", request01, requestList.get(0));
+		//assertSame("Paging for ArrayList index 0 for Customers to be the same as item01", customer01, customerList.get(0));
+		//assertSame("Paging for ArrayList index 0 for Packages to be the same as item01", package01, packageList.get(0));
+		//assertSame("Paging for ArrayList index 0 for User Accounts to be the same as item01", userAccount01, userAccountList.get(0));
+		//assertSame("Paging for ArrayList index 0 for Appointment to be the same as item01", appointment01, appointmentList.get(0));
+		
+		//One more time! Let's add another item and see that yes, there are in fact, two items!!!
+		//C206_CaseStudy.addRequest(requestList, request02);
+		//C206_CaseStudy.addRequest(customerList, customer02);
+		//C206_CaseStudy.addRequest(packageList, package02);
+		//C206_CaseStudy.addRequest(userAccountList, userAccount02);
+		//C206_CaseStudy.addRequest(appointmentList, appointment02);
+		//assertEquals("Paging for the size of ArrayList for Requests to be 2", 2, requestList.size());
+		//assertEquals("Paging for the size of ArrayList for Customers to be 2", 2, customerList.size());
+		//assertEquals("Paging for the size of ArrayList for Packages to be 2", 2, packageList.size());
+		//assertEquals("Paging for the size of ArrayList for UserAccounts to be 2", 2, userAccountList.size());
+		//assertEquals("Paging for the size of ArrayList for Appointments to be 2", 2, appointmentList.size());
+		//
+		
 		assertTrue("C206_CaseStudy_SampleTest ",true);
+	}
+	
+	@After
+	public void tearDown() throws Exception {
 	}
 
 }
