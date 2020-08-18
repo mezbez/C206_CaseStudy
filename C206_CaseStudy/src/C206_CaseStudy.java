@@ -5,15 +5,64 @@ public class C206_CaseStudy {
 		// TODO Auto-generated method stub
 
 		ArrayList<Request> requestList = new ArrayList<Request>();
+
 		ArrayList<Customer> customerList = new ArrayList<Customer>();
 		
+
+
+		//Request request01 = new Request("R0001", "HDB", 500, "How to Build an Atomic Bomb", 99999999,
+				//"no@thisisnotanemail.con", 50000, "31-FEBRUARY-2021", "Whole House", 3, 2, "Gangnam Style", true);
+		//Request request02 = new Request("R0002", "Landed Property", 1000, "How to go to the toilet", 88888888,
+				//"yes@thisisan.email", 99999, "31-SEPTEMBER-9999", "1 Bedroom", 3, 2, "Future Style", false);
+		ArrayList<Package> packageList = new ArrayList<Package>();
+		ArrayList<userAccount> userAccountList = new ArrayList<userAccount>();
+		ArrayList<Appointment> appointmentList = new ArrayList<Appointment>();
 		
-		Request request01 = new Request("HDB", 500, "How to Build an Atomic Bomb", 99999999, "no@thisisnotanemail.con", 50000, "31-FEBRUARY-2021", "Whole House", 3, 2, "Gangnam Style", true);
-		Request request02 = new Request("Landed Property", 1000, "How to go to the toilet", 88888888, "yes@thisisan.email", 99999, "31-SEPTEMBER-9999", "1 Bedroom", 3, 2, "Future Style", false);
+		Request request01 = new Request("RE0001", "HDB", 500, "RequestName01", 99999999, "no@thisisnotanemail.con", 50000, "31-FEBRUARY-2021", "Whole House", 3, 2, "Gangnam Style", true);
+		Request request02 = new Request("RE0002", "Landed Property", 1000, "RequestName02", 88888888, "yes@thisisan.email", 99999, "31-SEPTEMBER-9999", "1 Bedroom", 1, 0, "Future Style", false);
+		Request request03 = new Request("RE0003", "Condominium", 750, "RequestName03", 11111111, "maybe@thiscouldbean.email", 1, "1-JANUARY-0000", "1 Toilet", 0, 1, "Beyond of Style", true);
 		
+		Customer customer01 = new Customer("CU0001", "Din Tai Fung", 98888888, "dtf@uhh.com", "New");
+		Customer customer02 = new Customer("CU0002", "East Coast Plan", 89999999, "wardrobe@tri.vago", "New");
+		Customer customer03 = new Customer("CU0003", "Cockles of Heart", 10000000, "yes@okay.uhhuh", "New");
+		
+		Package package01 = new Package("PA0001", "This package packages packages into a package.", "21-January-2021", "29-January-2021", 2);
+		Package package02 = new Package("PA0002", "This package packages packages into a package.", "30-December-9999", "31-December-9999", 2);
+		Package package03 = new Package("PA0003", "This package packages packages into a package.", "21-January-2020", "29-January-2020", 2);
+		
+		userAccount userAccount01 = new userAccount("Li Ningxin", "Admin", "xxxxxx@rp.edu.sg", "thisisapassword", "New");
+		userAccount userAccount02 = new userAccount("Muhammad Zaki", "Admin", "yyyyyy@rp.edu.sg", "thisisapassword", "New");
+		userAccount userAccount03 = new userAccount("Syahid Tsaqif", "Designer", "zzzzzz@rp.edu.sg", "thisisapassword", "New");
+		userAccount userAccount04 = new userAccount("Erya Syarafina", "Admin", "aaaaaa@rp.edu.sg", "thisisapassword", "New");
+		
+		Appointment appointment01 = new Appointment("28-February-2021", "11:00AM", "Block 229 Roxley Road", "AP0001");
+		Appointment appointment02 = new Appointment("31-December-9999", "11:59PM", "Block 229 Roxley Road", "AP0002");
+		Appointment appointment03 = new Appointment("1-January-2000", "11:60PM", "Block 229 Roxley Road", "AP0003");;
+		
+
 		requestList.add(request01);
 		requestList.add(request02);
+
+		requestList.add(request03);
 		
+		customerList.add(customer01);
+		customerList.add(customer02);
+		customerList.add(customer03);
+		
+		packageList.add(package01);
+		packageList.add(package02);
+		packageList.add(package03);
+		
+		userAccountList.add(userAccount01);
+		userAccountList.add(userAccount02);
+		userAccountList.add(userAccount03);
+		userAccountList.add(userAccount04);
+		
+		appointmentList.add(appointment01);
+		appointmentList.add(appointment02);
+		appointmentList.add(appointment03); 
+		
+
 		int option = 0;
 
 		while (option != 4) {
@@ -43,8 +92,23 @@ public class C206_CaseStudy {
 
 				if (adMenu == 1) {
 					System.out.println("adMenu1");
+
 				} else if (adMenu == 2) {
-					System.out.println("adMenu2");
+					int manageOption = Helper.readInt("Enter option 1(Add) or 2(Delete) > ");
+					
+					if (manageOption == 1) {
+						String packageCode = Helper.readString("Enter package code > ");
+						String packageDescription = Helper.readString("Enter package description > ");
+						String packageStartDate = Helper.readString("Enter package start date > ");
+						String packageEndDate = Helper.readString("Enter package end date > ");
+						String packageAmount = Helper.readString("Enter package amount > ");
+						
+					} else if (manageOption == 2) {
+						
+					} else {
+						System.out.println("Invalid Option");
+					}
+					
 				} else if (adMenu == 3) {
 					System.out.println("adMenu3");
 				} else if (adMenu == 4) {
