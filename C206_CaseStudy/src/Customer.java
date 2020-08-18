@@ -37,5 +37,6 @@ public class Customer {
 	{
 		this.customerStatus = newCustomerStatus;
 	}
+	///
 
 }
