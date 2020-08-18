@@ -5,40 +5,38 @@ public class Customer {
 	private int contactNumber;
 	private String emailAddress;
 	private String customerStatus;
-	
-	public Customer (String customerID, String customerName, int contactNumber, String emailAddress, String customerStatus)
-	{
+
+	public Customer(String customerID, String customerName, int contactNumber, String emailAddress,
+			String customerStatus) {
 		this.customerID = customerID;
 		this.customerName = customerName;
 		this.contactNumber = contactNumber;
 		this.emailAddress = emailAddress;
 		this.customerStatus = "New";
 	}
-	
-	public String getCustomerName()
-	{
+
+	public String getCustomerID() {
+		return customerID;
+	}
+
+	public String getCustomerName() {
 		return customerName;
 	}
-	
-	public int getContactNumber()
-	{
+
+	public int getContactNumber() {
 		return contactNumber;
 	}
-	
-	public String getemailAddress()
-	{
+
+	public String getemailAddress() {
 		return emailAddress;
 	}
-	
-	public String getCustomerStatus()
-	{
+
+	public String getCustomerStatus() {
 		return customerStatus;
 	}
-	
-	public void setCustomerStatus(String newCustomerStatus)
-	{
+
+	public void setCustomerStatus(String newCustomerStatus) {
 		this.customerStatus = newCustomerStatus;
 	}
-	///
 
 }
