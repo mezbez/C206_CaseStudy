@@ -41,8 +41,8 @@ public class C206_CaseStudy
 	public static void menu()
 	{
 		C206_CaseStudy.setHeader("RESOURCE CENTRE APP");
-		System.out.println("1. Login as Customer");
-		System.out.println("2. Login as Admin/Designers");
+		System.out.println("1. Login as a Customer");
+		System.out.println("2. Login as an Admin/Designers");
 		System.out.println("3. Exit");
 		Helper.line(80, "-");
 	}
