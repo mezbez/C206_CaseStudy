@@ -72,6 +72,9 @@ public class C206_CaseStudy {
 
 		appointmentList.add(appointment01);
 		appointmentList.add(appointment02);
+
+		appointmentList.add(appointment03);
+
 		appointmentList.add(appointment03);
 
 		int option = 0;
@@ -137,7 +140,21 @@ public class C206_CaseStudy {
 					}
 
 				} else if (adMenu == 2) {
-					System.out.println("adMenu2");
+					int manageOption = Helper.readInt("Enter option 1(Add) or 2(Delete) > ");
+
+					if (manageOption == 1) {
+						String packageCode = Helper.readString("Enter package code > ");
+						String packageDescription = Helper.readString("Enter package description > ");
+						String packageStartDate = Helper.readString("Enter package start date > ");
+						String packageEndDate = Helper.readString("Enter package end date > ");
+						String packageAmount = Helper.readString("Enter package amount > ");
+
+					} else if (manageOption == 2) {
+
+					} else {
+						System.out.println("Invalid Option");
+					}
+
 				} else if (adMenu == 3) {
 					System.out.println("adMenu3");
 				} else if (adMenu == 4) {
