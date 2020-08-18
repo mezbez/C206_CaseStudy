@@ -101,8 +101,8 @@ public class C206_CaseStudy {
 					// System.out.println("4. Search customer by name");
 					int choices = Helper.readInt("Enter an option > ");
 					if (choices == 1) {
-						Customer CU = inputCustomer();
-						C206_CaseStudy.addCustomer(customerList, CU);
+						Customer CU = inputCust();
+						C206_CaseStudy.addCust(customerList, CU);
 
 					} else if (choices == 2) {
 						System.out.println("View all Customer");
