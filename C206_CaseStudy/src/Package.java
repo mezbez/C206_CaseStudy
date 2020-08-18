@@ -14,4 +14,29 @@ public class Package {
 		this.packageEndDate = packageEndDate;
 		this.packageAmount = packageAmount;
 	}
+	
+	public String getPackageCode()
+	{
+		return packageCode;
+	}
+	
+	public String getPackageDescription()
+	{
+		return packageDescription;
+	}
+	
+	public String getStartDate()
+	{
+		return packageStartDate;
+	}
+	
+	public String getEndDate()
+	{
+		return packageEndDate;
+	}
+	
+	public int getPackageAmount()
+	{
+		return packageAmount;
+	}
 }

@@ -32,5 +32,10 @@ public class Customer {
 	{
 		return customerStatus;
 	}
+	
+	public void setCustomerStatus(String newCustomerStatus)
+	{
+		this.customerStatus = newCustomerStatus;
+	}
 
 }
