@@ -32,6 +32,11 @@ public class Request {
 		this.isUrgent = isUrgent;
 	}
 	
+	public String getQuotationID()
+	{
+		return quotationID;
+	}
+	
 	public int getAreaSize() {
 		return areaSize;
 	}
