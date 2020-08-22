@@ -109,12 +109,10 @@ public class C206_CaseStudy {
 					// System.out.println("4. Search customer by name");
 					int choices = Helper.readInt("Enter an option > ");
 					if (choices == 1) {
-						Customer CU = inputCust();
-						C206_CaseStudy.addCust(customerList, CU);
-
+						Customer cus = inputCust();
+						C206_CaseStudy.addCust(customerList, cus);
 					} else if (choices == 2) {
 						C206_CaseStudy.viewAllCustomer(customerList);
-
 					} else if (choices == 3) {
 						C206_CaseStudy.DeleteCustomer(customerList);
 					} else {
@@ -207,7 +205,8 @@ public class C206_CaseStudy {
 			String userPassword = Helper.readString("Password: ");
 
 			for (Customer c : customerList) {
-				if (userEmail.contentEquals(c.getemailAddress()) && userPassword.contentEquals(c.getCustomerPasswrd())) {
+				if (userEmail.contentEquals(c.getemailAddress())
+						&& userPassword.contentEquals(c.getCustomerPasswrd())) {
 					authenticated = true;
 				} else if (countToThree == 3) {
 					System.exit(0);
