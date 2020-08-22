@@ -66,7 +66,6 @@ public class C206_CaseStudy {
 				C206_CaseStudy.viewAllPackages(packageList);
 
 			} else if (option == 2) {
-				C206_CaseStudy.authenticateCustomer(customerList);
 				C206_CaseStudy.showMenuCustomer();
 				int customerMenu = Helper.readInt("Enter an option which suits your needs: ");
 
@@ -76,13 +75,13 @@ public class C206_CaseStudy {
 					C206_CaseStudy.addCust(customerList, cus);
 				} else if (customerMenu == 2) {
 					//Request for Quotation
+					C206_CaseStudy.authenticateCustomer(customerList);
 					Request r = requestQuotation();
 					C206_CaseStudy.addQuotation(requestList, r);
 					
 				} else if (customerMenu == 3) {
 					//Manage Appointment
-					
-					
+					C206_CaseStudy.authenticateCustomer(customerList);
 				} else {
 					System.out.println("Invalid option");
 				}
@@ -178,7 +177,7 @@ public class C206_CaseStudy {
 	public static void menu() {
 		C206_CaseStudy.setHeader("RENOVATION ACE APP");
 		System.out.println("1. View as a Visitor");
-		System.out.println("2. Login as Customer");
+		System.out.println("2. View as a Customer");
 		System.out.println("3. Login as Admin/Designers");
 		System.out.println("4. Exit");
 		Helper.line(80, "-");
