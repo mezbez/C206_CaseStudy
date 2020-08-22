@@ -4,7 +4,7 @@ public class C206_CaseStudy {
 	private static final String theOtherFormat = "%-10s %-20s %-8s %-20s %-10s\n";
 	private static final String thePackageFormat = "%-6s %-60s %-20s %-20s %-5s \n";
 	private static final String theAppointmentFormat = "%-6s %-10s %-10s %-60s \n";
-
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
