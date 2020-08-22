@@ -2,14 +2,16 @@
 public class Customer {
 	private int customerID;
 	private String customerName;
+	private String customerPassword;
 	private int contactNumber;
 	private String emailAddress;
 	private String customerStatus;
 
-	public Customer(int customerID, String customerName, int contactNumber, String emailAddress,
+	public Customer(int customerID, String customerName, String customerPassword, int contactNumber, String emailAddress,
 			String customerStatus) {
 		this.customerID = customerID;
 		this.customerName = customerName;
+		this.customerPassword = customerPassword;
 		this.contactNumber = contactNumber;
 		this.emailAddress = emailAddress;
 		this.customerStatus = "New";
@@ -21,6 +23,10 @@ public class Customer {
 
 	public String getCustomerName() {
 		return customerName;
+	}
+	
+	public String getCustomerPasswrd() {
+		return customerPassword;
 	}
 
 	public int getContactNumber() {
