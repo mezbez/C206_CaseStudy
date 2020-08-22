@@ -63,25 +63,30 @@ public class C206_CaseStudy {
 			option = Helper.readInt("Enter an option > ");
 
 			if (option == 1) {
-				C206_CaseStudy.viewAllPackages(packageList);
-
-			} else if (option == 2) {
-				C206_CaseStudy.showMenuCustomer();
-				int customerMenu = Helper.readInt("Enter an option which suits your needs: ");
-
-				if (customerMenu == 1) {
+				C206_CaseStudy.showMenuVisitor();
+				int visitorMenu = Helper.readInt("Enter an option which suits your needs: ");
+				if (visitorMenu == 1)
+				{
+					//View Packages
+					C206_CaseStudy.viewAllPackages(packageList);
+				}
+				else if(visitorMenu == 2)
+				{
 					// Register Customer
 					Customer cus = inputCust();
 					C206_CaseStudy.addCust(customerList, cus);
-				} else if (customerMenu == 2) {
+				}
+
+			} else if (option == 2) {
+				C206_CaseStudy.showMenuCustomer();
+				C206_CaseStudy.authenticateCustomer(customerList);
+				int customerMenu = Helper.readInt("Enter an option which suits your needs: ");
+				if (customerMenu == 1) {
 					//Request for Quotation
-					C206_CaseStudy.authenticateCustomer(customerList);
 					Request r = requestQuotation();
 					C206_CaseStudy.addQuotation(requestList, r);
-					
-				} else if (customerMenu == 3) {
+				} else if (customerMenu == 2) {
 					//Manage Appointment
-					C206_CaseStudy.authenticateCustomer(customerList);
 				} else {
 					System.out.println("Invalid option");
 				}
@@ -247,9 +252,15 @@ public class C206_CaseStudy {
 	public static void showMenuCustomer()
 	{
 		C206_CaseStudy.setHeader("Customer");
-		System.out.println("1. Register");
-		System.out.println("2. Add Quotation");
-		System.out.println("3. Manage Appointment");
+		System.out.println("1. Add Quotation");
+		System.out.println("2. Manage Appointment");
+	}
+	
+	public static void showMenuVisitor()
+	{
+		C206_CaseStudy.setHeader("Visitor");
+		System.out.println("1. View Packages");
+		System.out.println("2. Register");
 	}
 
 	public static void showMenuAD() {
