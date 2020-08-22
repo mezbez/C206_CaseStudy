@@ -3,6 +3,7 @@ import java.util.ArrayList;
 public class C206_CaseStudy {
 	private static final String theOtherFormat = "%-10s %-20s %-8s %-20s %-10s\n";
 	private static final String thePackageFormat = "%-6s %-60s %-20s %-20s %-5s \n";
+	private static final String theAppointmentFormat = "%-6s %-10s %-10s %-60s \n";
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -94,6 +95,7 @@ public class C206_CaseStudy {
 				} else if (customerMenu == 2) {
 					// Manage Appointment
 					C206_CaseStudy.authenticateCustomer(customerList);
+					C206_CaseStudy.manageAppointment(appointmentList);
 				} else {
 					System.out.println("Invalid option");
 				}
@@ -160,6 +162,7 @@ public class C206_CaseStudy {
 				} else if (adMenu == 5) {
 					System.out.println("1. Add Appointment");
 					System.out.println("2. View all Appointment");
+					System.out.println("3. Edit Appointments");
 					System.out.println("3. Delete Appointment");
 					int choices1 = Helper.readInt("Enter a choice > ");
 					if (choices1 == 1) {
@@ -168,6 +171,8 @@ public class C206_CaseStudy {
 					} else if (choices1 == 2) {
 						C206_CaseStudy.ViewAllAppointment(appointmentList);
 					} else if (choices1 == 3) {
+						C206_CaseStudy.manageAppointment(appointmentList);
+					} else if (choices1 == 4) {
 						C206_CaseStudy.DeleteAppointment(appointmentList);
 					} else {
 						System.out.println("Invalid option !");
@@ -404,6 +409,54 @@ public class C206_CaseStudy {
 
 		Appointment App = new Appointment(ID, Date, Time, venue);
 		return App;
+	}
+	
+	public static void manageAppointment(ArrayList<Appointment> appointmentList) {
+		String ID = Helper.readString("Enter appointment ID > ");
+		boolean gotIt = false;
+		boolean changeDate = false;
+		boolean changeTime = false;
+		boolean changeVenue = false;
+		int theIndex = 0;
+		for (Appointment a : appointmentList)
+		{
+			if (a.getAID().contentEquals(ID))
+			{
+				System.out.println("Appointment found!");
+				gotIt = true;
+			}
+			if (gotIt == false)
+			{
+				theIndex = theIndex + 1;
+			}
+		}
+		if (gotIt == true)
+		{
+			System.out.println("The current date and time of appointment " + ID + " is " + appointmentList.get(theIndex).getADate() + " at " + appointmentList.get(theIndex).getATime() + ".");
+			changeDate = Helper.readBoolean("Would you like to change the date? >");
+			if (changeDate == true)
+			{
+				String newDate = Helper.readString("Enter the new date.");
+				appointmentList.get(theIndex).setADate(newDate);
+			}
+			changeTime = Helper.readBoolean("Would you like to change the time? >");
+			if (changeTime == true)
+			{
+				String newTime = Helper.readString("Enter the new time.");
+				appointmentList.get(theIndex).setATime(newTime);
+			}
+			changeVenue = Helper.readBoolean("Would you like to change the venue? >");
+			if (changeVenue == true)
+			{
+				String newVenue = Helper.readString("Enter the new venue.");
+				appointmentList.get(theIndex).setAVenue(newVenue);
+			}
+		}
+		else
+		{
+			System.out.println("Sorry, not found.");
+		}
+		
 
 	}
 
@@ -415,7 +468,7 @@ public class C206_CaseStudy {
 	public static String retrieveAllAppointment(ArrayList<Appointment> appointmentList) {
 		String output = "";
 		for (int i = 0; i < appointmentList.size(); i++) {
-			output += String.format("%-10s %-10s %-10s %-25s\n", appointmentList.get(i).getAID(),
+			output += String.format(theAppointmentFormat, appointmentList.get(i).getAID(),
 					appointmentList.get(i).getADate(), appointmentList.get(i).getATime(),
 					appointmentList.get(i).getAVenue());
 		}
@@ -425,7 +478,7 @@ public class C206_CaseStudy {
 
 	public static void ViewAllAppointment(ArrayList<Appointment> appointmentList) {
 		C206_CaseStudy.setHeader("APPOINTMENT LIST");
-		System.out.println(String.format(thePackageFormat, "ID", "DATE", "TIME", "VENUE"));
+		System.out.println(String.format(theAppointmentFormat, "ID", "DATE", "TIME", "VENUE"));
 		retrieveAllAppointment(appointmentList);
 	}
 
@@ -434,7 +487,7 @@ public class C206_CaseStudy {
 		boolean isFound = false;
 
 		for (int i = 0; i < appointmentList.size(); i++) {
-			if (ID == appointmentList.get(i).getAID()) {
+			if (ID.contentEquals(appointmentList.get(i).getAID())) {
 				System.out.println(appointmentList.get(i).getATime() + "deleted ! ");
 
 				appointmentList.remove(i);
@@ -443,7 +496,7 @@ public class C206_CaseStudy {
 
 		}
 		if (isFound == false) {
-			System.out.println("The customer ID entered does not exist");
+			System.out.println("The appointment ID entered does not exist");
 		} else {
 			System.out.println("Invalid option");
 

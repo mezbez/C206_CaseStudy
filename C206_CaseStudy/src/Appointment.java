@@ -27,5 +27,17 @@ public class Appointment {
 	public String getAVenue() {
 		return AVenue;
 	}
+	
+	public void setADate(String newDate) {
+		ADate = newDate;
+	}
+	
+	public void setATime(String newTime) {
+		ATime = newTime;
+	}
+	
+	public void setAVenue(String newVenue) {
+		AVenue = newVenue;
+	}
 
 }
