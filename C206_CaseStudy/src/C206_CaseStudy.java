@@ -164,7 +164,6 @@ public class C206_CaseStudy {
 					System.out.println("adMenu4");
 				} else if (adMenu == 5) {
 					System.out.println("adMenu5");
-					System.out.println("adMenu5");
 				} else {
 					System.out.println("Invalid option!");
 				}
