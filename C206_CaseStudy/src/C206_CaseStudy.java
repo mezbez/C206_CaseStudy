@@ -85,14 +85,15 @@ public class C206_CaseStudy {
 
 			} else if (option == 2) {
 				C206_CaseStudy.showMenuCustomer();
-				C206_CaseStudy.authenticateCustomer(customerList);
 				int customerMenu = Helper.readInt("Enter an option which suits your needs: ");
 				if (customerMenu == 1) {
 					// Request for Quotation
+					C206_CaseStudy.authenticateCustomer(customerList);
 					Request r = requestQuotation();
 					C206_CaseStudy.addQuotation(requestList, r);
 				} else if (customerMenu == 2) {
 					// Manage Appointment
+					C206_CaseStudy.authenticateCustomer(customerList);
 				} else {
 					System.out.println("Invalid option");
 				}
@@ -209,10 +210,12 @@ public class C206_CaseStudy {
 				if (userEmail.contentEquals(c.getemailAddress())
 						&& userPassword.contentEquals(c.getCustomerPasswrd())) {
 					authenticated = true;
-				} else if (countToThree == 3) {
-					System.exit(0);
-				} else {
-					countToThree = countToThree++;
+				} else if (userPassword.contentEquals(c.getCustomerPasswrd())) {
+					countToThree++;
+					if (countToThree == 3){
+						System.out.println("Hello");
+						System.exit(0);
+					}
 				}
 			}
 		}
