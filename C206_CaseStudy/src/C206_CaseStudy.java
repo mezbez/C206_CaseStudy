@@ -2,18 +2,15 @@ import java.util.ArrayList;
 
 public class C206_CaseStudy {
 	private static final String theOtherFormat = "%-10s %-20s %-8s %-20s %-10s\n";
+	private static final String thePackageFormat = "%-6s %-60s %-20s %-20s %-5s \n";
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
 		ArrayList<Request> requestList = new ArrayList<Request>();
-
-
 		ArrayList<Customer> customerList = new ArrayList<Customer>();
 		ArrayList<Package> packageList = new ArrayList<Package>();
 		ArrayList<userAccount> userAccountList = new ArrayList<userAccount>();
-
-
 		ArrayList<Appointment> appointmentList = new ArrayList<Appointment>();
 		
 		Request request01 = new Request("RE0001", "HDB", 500, "RequestName01", 0001, 50000, "31-FEBRUARY-2021", "Whole House", 3, 2, "Gangnam Style", true);
@@ -66,6 +63,7 @@ public class C206_CaseStudy {
 			option = Helper.readInt("Enter an option > ");
 
 			if (option == 1) {
+				C206_CaseStudy.viewAllPackages(packageList);
 
 			} else if (option == 2) {
 				C206_CaseStudy.authenticateCustomer(customerList);
@@ -325,12 +323,6 @@ public class C206_CaseStudy {
 		System.out.println(output);
 		return output;
 	}
-
-	public static void viewAllCustomer(ArrayList<Customer> customerList) {
-		C206_CaseStudy.setHeader("CUSTOMER LIST");
-		System.out.println(String.format(theOtherFormat, "ID", "NAME", "NUMBER", "EMAIL", "STATUS"));
-		retrieveAllCustomer(customerList);
-	}
 	
 	public static String retrieveAllRequests(ArrayList<Request> requestList)
 	{
@@ -346,7 +338,7 @@ public class C206_CaseStudy {
 	{
 		String output = "";
 		for (int i = 0; i < packageList.size(); i++) {
-			output += String.format("%-5s %-20s %-20s %-20s %-5d \n", packageList.get(i).getPackageCode(), packageList.get(i).getPackageDescription(), packageList.get(i).getStartDate(), packageList.get(i).getEndDate(), packageList.get(i).getPackageAmount());
+			output += String.format(thePackageFormat, packageList.get(i).getPackageCode(), packageList.get(i).getPackageDescription(), packageList.get(i).getStartDate(), packageList.get(i).getEndDate(), packageList.get(i).getPackageAmount());
 		}
 		System.out.println(output);
 		return output;
@@ -360,5 +352,17 @@ public class C206_CaseStudy {
 		}
 		System.out.println(output);
 		return output;
+	}
+	
+	public static void viewAllCustomer(ArrayList<Customer> customerList) {
+		C206_CaseStudy.setHeader("CUSTOMER LIST");
+		System.out.println(String.format(theOtherFormat, "ID", "NAME", "NUMBER", "EMAIL", "STATUS"));
+		retrieveAllCustomer(customerList);
+	}
+	
+	public static void viewAllPackages(ArrayList<Package> packageList) {
+		C206_CaseStudy.setHeader("PACKAGE LIST");
+		System.out.println(String.format(thePackageFormat, "CODE", "DESCRIPTION", "START DATE", "END DATE", "AMOUNT"));
+		retrieveAllPackages(packageList);
 	}
 }

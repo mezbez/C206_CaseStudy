@@ -89,7 +89,7 @@ public class C206_CaseStudyTest {
 		//Let's add an item and see if they have one item in them! (Kind of obvious in real life, but hey)
 		C206_CaseStudy.addQuotation(requestList, request01);
 		C206_CaseStudy.addCust(customerList, customer01);
-		//C206_CaseStudy.addPackage(packageList, package01);
+		C206_CaseStudy.addPackage(packageList, package01);
 		//C206_CaseStudy.addUserAccount(userAccountList, userAccount01);
 		//C206_CaseStudy.addAppointment(appointmentList, appointment01);
 		//assertEquals("Paging for the size of ArrayList for Requests to be 1", 1, requestList.size());
