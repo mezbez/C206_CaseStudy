@@ -91,19 +91,19 @@ public class C206_CaseStudyTest {
 		C206_CaseStudy.addCust(customerList, customer01);
 		C206_CaseStudy.addPackage(packageList, package01);
 		//C206_CaseStudy.addUserAccount(userAccountList, userAccount01);
-		//C206_CaseStudy.addAppointment(appointmentList, appointment01);
-		//assertEquals("Paging for the size of ArrayList for Requests to be 1", 1, requestList.size());
-		//assertEquals("Paging for the size of ArrayList for Customers to be 1", 1, customerList.size());
-		//assertEquals("Paging for the size of ArrayList for Packages to be 1", 1, packageList.size());
+		C206_CaseStudy.addAppointment(appointmentList, appointment01);
+		assertEquals("Paging for the size of ArrayList for Requests to be 1", 1, requestList.size());
+		assertEquals("Paging for the size of ArrayList for Customers to be 1", 1, customerList.size());
+		assertEquals("Paging for the size of ArrayList for Packages to be 1", 1, packageList.size());
 		//assertEquals("Paging for the size of ArrayList for UserAccounts to be 1", 1, userAccountList.size());
-		//assertEquals("Paging for the size of ArrayList for Appointments to be 1", 1, appointmentList.size());
+		assertEquals("Paging for the size of ArrayList for Appointments to be 1", 1, appointmentList.size());
 		
 		//Let's see if the item inside it is the same as what we just added!
-		//assertSame("Paging for ArrayList index 0 for Requests to be the same as item01", request01, requestList.get(0));
-		//assertSame("Paging for ArrayList index 0 for Customers to be the same as item01", customer01, customerList.get(0));
+		assertSame("Paging for ArrayList index 0 for Requests to be the same as item01", request01, requestList.get(0));
+		assertSame("Paging for ArrayList index 0 for Customers to be the same as item01", customer01, customerList.get(0));
 		//assertSame("Paging for ArrayList index 0 for Packages to be the same as item01", package01, packageList.get(0));
 		//assertSame("Paging for ArrayList index 0 for User Accounts to be the same as item01", userAccount01, userAccountList.get(0));
-		//assertSame("Paging for ArrayList index 0 for Appointment to be the same as item01", appointment01, appointmentList.get(0));
+		assertSame("Paging for ArrayList index 0 for Appointment to be the same as item01", appointment01, appointmentList.get(0));
 		
 		//One more time! Let's add another item and see that yes, there are in fact, two items!!!
 		//C206_CaseStudy.addRequest(requestList, request02);
