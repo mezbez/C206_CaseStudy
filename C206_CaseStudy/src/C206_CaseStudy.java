@@ -1,9 +1,11 @@
 import java.util.ArrayList;
 
 public class C206_CaseStudy {
-	private static final String theOtherFormat = "%-10s %-20s %-8s %-20s %-10s\n";
+	private static final String theCustomerFormat = "%-10s %-20s %-8s %-20s %-10s\n";
 	private static final String thePackageFormat = "%-6s %-60s %-20s %-20s %-5s \n";
 	private static final String theAppointmentFormat = "%-6s %-10s %-10s %-60s \n";
+	private static final String theRequestFormat = "%-5s %-10s %-5s %-30s %-5s %-5s %-15s %-10s %-5s %-5s %-10s \n";
+	private static final String theUserAccountFormat = "%-10s %-10s %-20s %-15s %-10s \n";
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -125,7 +127,8 @@ public class C206_CaseStudy {
 					}
 				} else if (adMenu == 2) {
 					System.out.println("1. Add package");
-					System.out.println("2. Delete package");
+					System.out.println("2. View packages");
+					System.out.println("3. Delete packages");
 					int manageOption = Helper.readInt("Enter option > ");
 
 					if (manageOption == 1) {
@@ -138,8 +141,9 @@ public class C206_CaseStudy {
 								packageEndDate, packageAmount);
 						addPackage(packageList, packagetoAdd);
 						System.out.println("We've added your package for you!");
-
 					} else if (manageOption == 2) {
+						C206_CaseStudy.viewAllPackages(packageList);
+					} else if (manageOption == 3) {
 						String deletePackage = Helper.readString("Enter package code to delete package  > ");
 						boolean packageFound = false;
 
@@ -157,7 +161,22 @@ public class C206_CaseStudy {
 						}
 					}
 				} else if (adMenu == 3) {
-					System.out.println("adMenu3");
+					System.out.println("1. Add a Request");
+					System.out.println("2. Manage a Request");
+					System.out.println("3. Delete a Request");
+					int choices3 = Helper.readInt("Enter a choice");
+					if (choices3 == 1)
+					{
+						C206_CaseStudy.requestQuotation();
+					}
+					else if (choices3 == 2)
+					{
+						C206_CaseStudy.viewAllRequests(requestList);
+					}
+					else if (choices3 == 3)
+					{
+						C206_CaseStudy.DeleteRequest(requestList);
+					}
 				} else if (adMenu == 4) {
 					System.out.println("adMenu4");
 				} else if (adMenu == 5) {
@@ -174,7 +193,7 @@ public class C206_CaseStudy {
 					} else if (choices1 == 3) {
 						C206_CaseStudy.manageAppointment(appointmentList);
 					} else if (choices1 == 4) {
-						C206_CaseStudy.DeleteAppointment(appointmentList);
+						C206_CaseStudy.deleteAppointment(appointmentList);
 					} else {
 						System.out.println("Invalid option !");
 					}
@@ -344,7 +363,7 @@ public class C206_CaseStudy {
 	public static String retrieveAllCustomer(ArrayList<Customer> customerList) {
 		String output = "";
 		for (int i = 0; i < customerList.size(); i++) {
-			output += String.format("%-10s %-20s %-8s %-20s %-10s \n", customerList.get(i).getCustomerID(),
+			output += String.format(theCustomerFormat, customerList.get(i).getCustomerID(),
 					customerList.get(i).getCustomerName(), customerList.get(i).getContactNumber(),
 					customerList.get(i).getemailAddress(), customerList.get(i).getCustomerStatus());
 		}
@@ -355,7 +374,7 @@ public class C206_CaseStudy {
 	public static String retrieveAllRequests(ArrayList<Request> requestList) {
 		String output = "";
 		for (int i = 0; i < requestList.size(); i++) {
-			output += String.format("%-5s %-10s %-5d %-30s %-4d %-5d %-15s %-10s %-5d %5-d %-10s %-5b \n",
+			output += String.format(theRequestFormat,
 					requestList.get(i).getQuotationID(), requestList.get(i).getPropertyType(),
 					requestList.get(i).getAreaSize(), requestList.get(i).getRequestName(),
 					requestList.get(i).getCustomerID(), requestList.get(i).getTargetCompletionDate(),
@@ -381,7 +400,7 @@ public class C206_CaseStudy {
 	public static String retrieveAllUserAccounts(ArrayList<userAccount> userAccountList) {
 		String output = "";
 		for (int i = 0; i < userAccountList.size(); i++) {
-			output += String.format("%-10s %-10s %-20s %-15s %-10s \n", userAccountList.get(i).getStaffName(),
+			output += String.format(theUserAccountFormat, userAccountList.get(i).getStaffName(),
 					userAccountList.get(i).getStaffRole(), userAccountList.get(i).getemailAddress(),
 					userAccountList.get(i).getStaffPassword(), userAccountList.get(i).getStaffStatus());
 		}
@@ -391,7 +410,7 @@ public class C206_CaseStudy {
 
 	public static void viewAllCustomer(ArrayList<Customer> customerList) {
 		C206_CaseStudy.setHeader("CUSTOMER LIST");
-		System.out.println(String.format(theOtherFormat, "ID", "NAME", "NUMBER", "EMAIL", "STATUS"));
+		System.out.println(String.format(theCustomerFormat, "ID", "NAME", "NUMBER", "EMAIL", "STATUS"));
 		retrieveAllCustomer(customerList);
 	}
 
@@ -476,7 +495,13 @@ public class C206_CaseStudy {
 		retrieveAllAppointment(appointmentList);
 	}
 
-	public static void DeleteAppointment(ArrayList<Appointment> appointmentList) {
+	public static void viewAllRequests(ArrayList<Request> requestList) {
+		C206_CaseStudy.setHeader("REQUEST LIST");
+		System.out.println(String.format(theRequestFormat, "ID", "PROPERTY TYPE", "AREA SIZE", "REQUEST NAME", "CUSTOMER ID", "BUDGET AMOUNT", "TARGET COMPLETION DATE", "RENOVATION TYPE", "ROOM RENOVATIONS MOUNT", "TOILET RENOVATION AMOUNT", "RENOVATION STRING", "IS URGENT?"));
+		retrieveAllRequests(requestList);
+	}
+	
+	public static void deleteAppointment(ArrayList<Appointment> appointmentList) {
 		String ID = Helper.readString("Enter Appointment ID > ");
 		boolean isFound = false;
 
@@ -491,6 +516,27 @@ public class C206_CaseStudy {
 		}
 		if (isFound == false) {
 			System.out.println("The appointment ID entered does not exist");
+		} else {
+			System.out.println("Invalid option");
+
+		}
+	}
+	
+	public static void DeleteRequest(ArrayList<Request> requestList) {
+		String ID = Helper.readString("Enter Quotation ID > ");
+		boolean isFound = false;
+
+		for (int i = 0; i < requestList.size(); i++) {
+			if (ID.contentEquals(requestList.get(i).getQuotationID())) {
+				System.out.println(requestList.get(i).getQuotationID() + "deleted ! ");
+
+				requestList.remove(i);
+				isFound = true;
+			}
+
+		}
+		if (isFound == false) {
+			System.out.println("The quotation ID entered does not exist");
 		} else {
 			System.out.println("Invalid option");
 
