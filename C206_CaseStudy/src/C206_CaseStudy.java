@@ -41,9 +41,12 @@ public class C206_CaseStudy {
 		Customer customer02 = new Customer(0002, "East Coast Plan", "password", 89999999, "wardrobe@tri.vago", "New");
 		Customer customer03 = new Customer(0003, "Cockles of Heart", "password", 10000000, "yes@okay.uhhuh", "New");
 
-		Appointment appointment01 = new Appointment("AP0001", "28-February-2021", "11:00AM", "Block 229 Roxley Road");
-		Appointment appointment02 = new Appointment("AP0002", "31-December-9999", "11:59PM", "Block 229 Roxley Road");
-		Appointment appointment03 = new Appointment("AP0003", "1-January-2000", "11:60PM", "Block 229 Roxley Road");
+		Appointment appointment01 = new Appointment("AP0001", "28-February-2021", "11:00AM", "Block 229 Roxley Road",
+				"Ningxin");
+		Appointment appointment02 = new Appointment("AP0002", "31-December-9999", "11:59PM", "Block 229 Roxley Road",
+				"Syahid");
+		Appointment appointment03 = new Appointment("AP0003", "1-January-2000", "11:60PM", "Block 229 Roxley Road",
+				"Zaki");
 
 		requestList.add(request01);
 		requestList.add(request02);
@@ -404,8 +407,9 @@ public class C206_CaseStudy {
 		String Date = Helper.readString("Enter appointment date (DAY-MONTH-YEAR) >");
 		String Time = Helper.readString("Enter appointment time (HH:MM AM/PM) > ");
 		String venue = Helper.readString("Enter appointment venue > ");
+		String Designer = Helper.readString("Enter Designer Name > ");
 
-		Appointment App = new Appointment(ID, Date, Time, venue);
+		Appointment App = new Appointment(ID, Date, Time, venue, Designer);
 		return App;
 	}
 
