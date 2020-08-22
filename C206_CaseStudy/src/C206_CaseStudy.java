@@ -207,15 +207,12 @@ public class C206_CaseStudy {
 			String userPassword = Helper.readString("Password: ");
 
 			for (Customer c : customerList) {
-				if (userEmail.contentEquals(c.getemailAddress())
-						&& userPassword.contentEquals(c.getCustomerPasswrd())) {
+				if (userEmail.contentEquals(c.getemailAddress()) && userPassword.contentEquals(c.getCustomerPasswrd())) {
 					authenticated = true;
-				} else if (userPassword.contentEquals(c.getCustomerPasswrd())) {
-					countToThree++;
-					if (countToThree == 3){
-						System.out.println("Hello");
-						System.exit(0);
-					}
+				} else if (countToThree == 3) {
+					System.exit(0);
+				} else {
+					countToThree = countToThree++;
 				}
 			}
 		}
