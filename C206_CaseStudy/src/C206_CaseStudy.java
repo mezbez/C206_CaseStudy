@@ -289,12 +289,11 @@ public class C206_CaseStudy {
 
 		for (int i = 0; i < customerList.size(); i++) {
 			if (cID == customerList.get(i).getCustomerID()) {
-				System.out.println(customerList.get(i).getCustomerName() + "deleted ! ");
+				System.out.println(customerList.get(i).getCustomerName() + " deleted ! ");
 
 				customerList.remove(i);
 				isFound = true;
 			}
-
 		}
 		if (isFound == false) {
 			System.out.println("The customer ID entered does not exist");
@@ -409,7 +408,7 @@ public class C206_CaseStudy {
 		Appointment App = new Appointment(ID, Date, Time, venue);
 		return App;
 	}
-	
+
 	public static void manageAppointment(ArrayList<Appointment> appointmentList) {
 		String ID = Helper.readString("Enter appointment ID > ");
 		boolean gotIt = false;
@@ -417,45 +416,37 @@ public class C206_CaseStudy {
 		boolean changeTime = false;
 		boolean changeVenue = false;
 		int theIndex = 0;
-		for (Appointment a : appointmentList)
-		{
-			if (a.getAID().contentEquals(ID))
-			{
+		for (Appointment a : appointmentList) {
+			if (a.getAID().contentEquals(ID)) {
 				System.out.println("Appointment found!");
 				gotIt = true;
 			}
-			if (gotIt == false)
-			{
+			if (gotIt == false) {
 				theIndex = theIndex + 1;
 			}
 		}
-		if (gotIt == true)
-		{
-			System.out.println("The current date and time of appointment " + ID + " is " + appointmentList.get(theIndex).getADate() + " at " + appointmentList.get(theIndex).getATime() + ".");
+		if (gotIt == true) {
+			System.out.println(
+					"The current date and time of appointment " + ID + " is " + appointmentList.get(theIndex).getADate()
+							+ " at " + appointmentList.get(theIndex).getATime() + ".");
 			changeDate = Helper.readBoolean("Would you like to change the date? >");
-			if (changeDate == true)
-			{
+			if (changeDate == true) {
 				String newDate = Helper.readString("Enter the new date.");
 				appointmentList.get(theIndex).setADate(newDate);
 			}
 			changeTime = Helper.readBoolean("Would you like to change the time? >");
-			if (changeTime == true)
-			{
+			if (changeTime == true) {
 				String newTime = Helper.readString("Enter the new time.");
 				appointmentList.get(theIndex).setATime(newTime);
 			}
 			changeVenue = Helper.readBoolean("Would you like to change the venue? >");
-			if (changeVenue == true)
-			{
+			if (changeVenue == true) {
 				String newVenue = Helper.readString("Enter the new venue.");
 				appointmentList.get(theIndex).setAVenue(newVenue);
 			}
-		}
-		else
-		{
+		} else {
 			System.out.println("Sorry, not found.");
 		}
-		
 
 	}
 
