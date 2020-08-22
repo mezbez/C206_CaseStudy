@@ -106,16 +106,16 @@ public class C206_CaseStudyTest {
 		assertSame("Paging for ArrayList index 0 for Appointment to be the same as item01", appointment01, appointmentList.get(0));
 		
 		//One more time! Let's add another item and see that yes, there are in fact, two items!!!
-		//C206_CaseStudy.addRequest(requestList, request02);
-		//C206_CaseStudy.addRequest(customerList, customer02);
-		//C206_CaseStudy.addRequest(packageList, package02);
+		C206_CaseStudy.addQuotation(requestList, request02);
+		C206_CaseStudy.addCust(customerList, customer02);
+		C206_CaseStudy.addPackage(packageList, package02);
 		//C206_CaseStudy.addRequest(userAccountList, userAccount02);
-		//C206_CaseStudy.addRequest(appointmentList, appointment02);
-		//assertEquals("Paging for the size of ArrayList for Requests to be 2", 2, requestList.size());
-		//assertEquals("Paging for the size of ArrayList for Customers to be 2", 2, customerList.size());
-		//assertEquals("Paging for the size of ArrayList for Packages to be 2", 2, packageList.size());
+		C206_CaseStudy.addAppointment(appointmentList, appointment02);
+		assertEquals("Paging for the size of ArrayList for Requests to be 2", 2, requestList.size());
+		assertEquals("Paging for the size of ArrayList for Customers to be 2", 2, customerList.size());
+		assertEquals("Paging for the size of ArrayList for Packages to be 2", 2, packageList.size());
 		//assertEquals("Paging for the size of ArrayList for UserAccounts to be 2", 2, userAccountList.size());
-		//assertEquals("Paging for the size of ArrayList for Appointments to be 2", 2, appointmentList.size());
+		assertEquals("Paging for the size of ArrayList for Appointments to be 2", 2, appointmentList.size());
 		//
 		
 		assertTrue("C206_CaseStudy_SampleTest ",true);
