@@ -6,7 +6,8 @@ public class C206_CaseStudy {
 	private static final String theAppointmentFormat = "%-6s %-10s %-10s %-60s \n";
 	private static final String theRequestFormat = "%-5s %-10s %-5s %-30s %-5s %-5s %-15s %-10s %-5s %-5s %-10s \n";
 	private static final String theUserAccountFormat = "%-10s %-10s %-20s %-15s %-10s \n";
-	
+	private static final String theQuotationFormat = "%-5d %-5d %-10s %-10s %-10s %-20s %-15s %-10s \n";
+
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
@@ -15,6 +16,7 @@ public class C206_CaseStudy {
 		ArrayList<Package> packageList = new ArrayList<Package>();
 		ArrayList<userAccount> userAccountList = new ArrayList<userAccount>();
 		ArrayList<Appointment> appointmentList = new ArrayList<Appointment>();
+		ArrayList<Quotation> quotationList = new ArrayList<Quotation>();
 
 		Request request01 = new Request("RE0001", "HDB", 500, "RequestName01", 0001, 50000, "31-FEBRUARY-2021",
 				"Whole House", 3, 2, "Gangnam Style", true);
@@ -50,6 +52,13 @@ public class C206_CaseStudy {
 		Appointment appointment03 = new Appointment("AP0003", "1-January-2000", "11:60PM", "Block 229 Roxley Road",
 				"Zaki");
 
+		Quotation quotation01 = new Quotation(01, 001, "Kitchen", "tiles", "$100", "Syahid", "18-August-2020",
+				"$20000");
+		Quotation quotation02 = new Quotation(02, 002, "Bedroom", "cabinet", "$120", "Ningxin", "20-August-2020",
+				"$25000");
+		Quotation quotation03 = new Quotation(03, 003, "Living room", "windows", "$150", "Zaki", "24-August-2020",
+				"$30000");
+
 		requestList.add(request01);
 		requestList.add(request02);
 		requestList.add(request03);
@@ -70,6 +79,10 @@ public class C206_CaseStudy {
 		appointmentList.add(appointment01);
 		appointmentList.add(appointment02);
 		appointmentList.add(appointment03);
+
+		quotationList.add(quotation01);
+		quotationList.add(quotation02);
+		quotationList.add(quotation03);
 
 		int option = 0;
 
@@ -164,21 +177,29 @@ public class C206_CaseStudy {
 					System.out.println("1. Add a Request");
 					System.out.println("2. Manage a Request");
 					System.out.println("3. Delete a Request");
-					int choices3 = Helper.readInt("Enter a choice");
-					if (choices3 == 1)
-					{
+					int choices3 = Helper.readInt("Enter a choice > ");
+					if (choices3 == 1) {
 						C206_CaseStudy.requestQuotation();
-					}
-					else if (choices3 == 2)
-					{
+					} else if (choices3 == 2) {
 						C206_CaseStudy.viewAllRequests(requestList);
-					}
-					else if (choices3 == 3)
-					{
+					} else if (choices3 == 3) {
 						C206_CaseStudy.DeleteRequest(requestList);
 					}
 				} else if (adMenu == 4) {
-					System.out.println("adMenu4");
+					System.out.println("1. Add Quotation");
+					System.out.println("2. View all Quotation");
+					System.out.println("3. Delete aQuotation");
+					int choices4 = Helper.readInt("ENter a choice > ");
+					if (choices4 == 1) {
+						Quotation quot = inputQuot();
+						C206_CaseStudy.addQuotation(quotationList, quot);
+					} else if (choices4 == 2) {
+						C206_CaseStudy.ViewAllQuoation(quotationList);
+					} else if (choices4 == 3) {
+						C206_CaseStudy.DeleteQuotation(quotationList);
+					} else {
+						System.out.println("Invalid option! ");
+					}
 				} else if (adMenu == 5) {
 					System.out.println("1. Add Appointment");
 					System.out.println("2. View all Appointment");
@@ -374,13 +395,12 @@ public class C206_CaseStudy {
 	public static String retrieveAllRequests(ArrayList<Request> requestList) {
 		String output = "";
 		for (int i = 0; i < requestList.size(); i++) {
-			output += String.format(theRequestFormat,
-					requestList.get(i).getQuotationID(), requestList.get(i).getPropertyType(),
-					requestList.get(i).getAreaSize(), requestList.get(i).getRequestName(),
-					requestList.get(i).getCustomerID(), requestList.get(i).getTargetCompletionDate(),
-					requestList.get(i).getRenovationType(), requestList.get(i).getRoomRenovationAmount(),
-					requestList.get(i).getToiletRenovationAmount(), requestList.get(i).getRenovationString(),
-					requestList.get(i).isUrgent());
+			output += String.format(theRequestFormat, requestList.get(i).getQuotationID(),
+					requestList.get(i).getPropertyType(), requestList.get(i).getAreaSize(),
+					requestList.get(i).getRequestName(), requestList.get(i).getCustomerID(),
+					requestList.get(i).getTargetCompletionDate(), requestList.get(i).getRenovationType(),
+					requestList.get(i).getRoomRenovationAmount(), requestList.get(i).getToiletRenovationAmount(),
+					requestList.get(i).getRenovationString(), requestList.get(i).isUrgent());
 		}
 		System.out.println(output);
 		return output;
@@ -497,10 +517,12 @@ public class C206_CaseStudy {
 
 	public static void viewAllRequests(ArrayList<Request> requestList) {
 		C206_CaseStudy.setHeader("REQUEST LIST");
-		System.out.println(String.format(theRequestFormat, "ID", "PROPERTY TYPE", "AREA SIZE", "REQUEST NAME", "CUSTOMER ID", "BUDGET AMOUNT", "TARGET COMPLETION DATE", "RENOVATION TYPE", "ROOM RENOVATIONS MOUNT", "TOILET RENOVATION AMOUNT", "RENOVATION STRING", "IS URGENT?"));
+		System.out.println(String.format(theRequestFormat, "ID", "PROPERTY TYPE", "AREA SIZE", "REQUEST NAME",
+				"CUSTOMER ID", "BUDGET AMOUNT", "TARGET COMPLETION DATE", "RENOVATION TYPE", "ROOM RENOVATIONS MOUNT",
+				"TOILET RENOVATION AMOUNT", "RENOVATION STRING", "IS URGENT?"));
 		retrieveAllRequests(requestList);
 	}
-	
+
 	public static void deleteAppointment(ArrayList<Appointment> appointmentList) {
 		String ID = Helper.readString("Enter Appointment ID > ");
 		boolean isFound = false;
@@ -521,7 +543,7 @@ public class C206_CaseStudy {
 
 		}
 	}
-	
+
 	public static void DeleteRequest(ArrayList<Request> requestList) {
 		String ID = Helper.readString("Enter Quotation ID > ");
 		boolean isFound = false;
@@ -542,4 +564,66 @@ public class C206_CaseStudy {
 
 		}
 	}
+
+	// Manage Quotation
+	public static Quotation inputQuot() {
+		int RID = Helper.readInt("Enter Request ID > ");
+		int QID = Helper.readInt("Enter Quotation ID > ");
+		String category = Helper.readString("Enter Category > ");
+		String description = Helper.readString("Enter description > ");
+		String price = Helper.readString("Enter price for the category > $");
+		String name = Helper.readString("Enter Designer Name > ");
+		String date = Helper.readString("Enter earliest start date > ");
+		String totalAmount = Helper.readString("Enter total Amount > ");
+
+		Quotation quot = new Quotation(RID, QID, category, description, price, name, date, totalAmount);
+		return quot;
+	}
+
+	public static void addQuotation(ArrayList<Quotation> quotationList, Quotation quot) {
+		quotationList.add(quot);
+		System.out.println("Quotation Added! ");
+	}
+
+	public static String retrieveAllQuotation(ArrayList<Quotation> quotationList) {
+		String output = "";
+		for (int i = 0; i < quotationList.size(); i++) {
+			output += String.format(theQuotationFormat, quotationList.get(i).getRequestID(),
+					quotationList.get(i).getQuotationID(), quotationList.get(i).getCategory(),
+					quotationList.get(i).getDescription(), quotationList.get(i).getPrice(),
+					quotationList.get(i).getDesigner(), quotationList.get(i).getStartDate(),
+					quotationList.get(i).getTotalAmount());
+		}
+		System.out.println(output);
+		return output;
+	}
+
+	public static void ViewAllQuoation(ArrayList<Quotation> quotationList) {
+		C206_CaseStudy.setHeader("QUOTATION LIST");
+		System.out.println(String.format(theQuotationFormat, "Request ID", "Quotation ID", "Category", "Description",
+				"Price", "Designer Name", "Start Date", "Total Quotation amount"));
+		retrieveAllQuotation(quotationList);
+	}
+
+	public static void DeleteQuotation(ArrayList<Quotation> quotationList) {
+		int ID = Helper.readInt("Enter Quotation ID > ");
+		boolean isFound = false;
+
+		for (int i = 0; i < quotationList.size(); i++) {
+			if (ID == quotationList.get(i).getQuotationID()) {
+				System.out.println(quotationList.get(i).getQuotationID() + "deleted ! ");
+
+				quotationList.remove(i);
+				isFound = true;
+			}
+
+		}
+		if (isFound == false) {
+			System.out.println("The quotation ID entered does not exist");
+		} else {
+			System.out.println("Invalid option");
+
+		}
+	}
+
 }
