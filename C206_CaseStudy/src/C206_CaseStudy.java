@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class C206_CaseStudy {
-	private static final String theOtherFormat = "%-10d %-30s %-10d %-10s %-20s\n";
+	private static final String theOtherFormat = "%-10s %-20s %-8s %-20s %-10s\n";
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -16,9 +16,9 @@ public class C206_CaseStudy {
 
 		ArrayList<Appointment> appointmentList = new ArrayList<Appointment>();
 		
-		Request request01 = new Request("RE0001", "HDB", 500, "RequestName01", 99999999, "no@thisisnotanemail.con", 50000, "31-FEBRUARY-2021", "Whole House", 3, 2, "Gangnam Style", true);
-		Request request02 = new Request("RE0002", "Landed Property", 1000, "RequestName02", 88888888, "yes@thisisan.email", 99999, "31-SEPTEMBER-9999", "1 Bedroom", 1, 0, "Future Style", false);
-		Request request03 = new Request("RE0003", "Condominium", 750, "RequestName03", 11111111, "maybe@thiscouldbean.email", 1, "1-JANUARY-0000", "1 Toilet", 0, 1, "Beyond of Style", true);
+		Request request01 = new Request("RE0001", "HDB", 500, "RequestName01", 0001, 50000, "31-FEBRUARY-2021", "Whole House", 3, 2, "Gangnam Style", true);
+		Request request02 = new Request("RE0002", "Landed Property", 1000, "RequestName02", 0002, 99999, "31-SEPTEMBER-9999", "1 Bedroom", 1, 0, "Future Style", false);
+		Request request03 = new Request("RE0003", "Condominium", 750, "RequestName03", 0003, 1, "1-JANUARY-0000", "1 Toilet", 0, 1, "Beyond of Style", true);
 		
 		Package package01 = new Package("PA0001", "This package packages packages into a package.", "21-January-2021", "29-January-2021", 2);
 		Package package02 = new Package("PA0002", "This package packages packages into a package.", "30-December-9999", "31-December-9999", 2);
@@ -29,18 +29,16 @@ public class C206_CaseStudy {
 		userAccount userAccount03 = new userAccount("Syahid Tsaqif", "Designer", "zzzzzz@rp.edu.sg", "thisisapassword", "New");
 		userAccount userAccount04 = new userAccount("Erya Syarafina", "Admin", "aaaaaa@rp.edu.sg", "thisisapassword", "New");
 
-		Customer customer01 = new Customer(0001, "Din Tai Fung", 98888888, "dtf@uhh.com", "New");
-		Customer customer02 = new Customer(0002, "East Coast Plan", 89999999, "wardrobe@tri.vago", "New");
-		Customer customer03 = new Customer(0003, "Cockles of Heart", 10000000, "yes@okay.uhhuh", "New");
+		Customer customer01 = new Customer(0001, "Din Tai Fung", "password", 98888888, "dtf@uhh.com", "New");
+		Customer customer02 = new Customer(0002, "East Coast Plan", "password", 89999999, "wardrobe@tri.vago", "New");
+		Customer customer03 = new Customer(0003, "Cockles of Heart", "password", 10000000, "yes@okay.uhhuh", "New");
 
 		Appointment appointment01 = new Appointment("28-February-2021", "11:00AM", "Block 229 Roxley Road", "AP0001");
 		Appointment appointment02 = new Appointment("31-December-9999", "11:59PM", "Block 229 Roxley Road", "AP0002");
 		Appointment appointment03 = new Appointment("1-January-2000", "11:60PM", "Block 229 Roxley Road", "AP0003");
-		;
 
 		requestList.add(request01);
 		requestList.add(request02);
-
 		requestList.add(request03);
 
 		customerList.add(customer01);
@@ -70,6 +68,7 @@ public class C206_CaseStudy {
 			if (option == 1) {
 
 			} else if (option == 2) {
+				C206_CaseStudy.authenticateCustomer(customerList);
 				C206_CaseStudy.showMenuCustomer();
 				int customerMenu = Helper.readInt("Enter an option which suits your needs: ");
 
@@ -85,10 +84,12 @@ public class C206_CaseStudy {
 				} else if (customerMenu == 3) {
 					//Manage Appointment
 					
+					
 				} else {
 					System.out.println("Invalid option");
 				}
 			} else if (option == 3) {
+				C206_CaseStudy.authenticateAD(userAccountList);
 				C206_CaseStudy.showMenuAD();
 				int adMenu = Helper.readInt("Enter an option which suit your needs: ");
 
@@ -103,8 +104,8 @@ public class C206_CaseStudy {
 						C206_CaseStudy.addCust(customerList, CU);
 
 					} else if (choices == 2) {
-						System.out.println("View all Customer");
-						C206_CaseStudy.retrieveAllCustomer(customerList);
+						System.out.println("Viewing All Customers!");
+						C206_CaseStudy.viewAllCustomer(customerList);
 
 					} else if (choices == 3) {
 						System.out.println("Delete Customer");
@@ -138,7 +139,7 @@ public class C206_CaseStudy {
 						String packageEndDate = Helper.readString("Enter package end date > ");
 						int packageAmount = Helper.readInt("Enter package amount > ");
 						Package packagetoAdd = new Package(packageCode, packageDescription, packageStartDate, packageEndDate, packageAmount);
-						packageList.add(packagetoAdd);
+						addPackage(packageList, packagetoAdd);
 						System.out.println("We've added your package for you!");
 
 					} else if (manageOption == 2) {
@@ -192,7 +193,62 @@ public class C206_CaseStudy {
 		Helper.line(80, "-");
 	}
 
-	public static void showMenuCustomer() {
+	public static void authenticateCustomer(ArrayList<Customer> customerList) {
+		boolean authenticated = false;
+		int countToThree = 0;
+		while (authenticated == false)
+		{
+			String userEmail = Helper.readString("Email Address: ");
+			String userPassword = Helper.readString("Password: ");
+			
+			for (Customer c : customerList)
+			{
+				if (userEmail.contentEquals(c.getemailAddress()) && userPassword.contentEquals(c.getCustomerPasswrd()))
+				{
+					authenticated = true;
+				}
+				else if (countToThree == 3)
+				{
+					System.exit(0);
+				}
+				else
+				{
+					countToThree = countToThree++;
+				}
+			}
+		}
+	
+	}
+	
+	public static void authenticateAD(ArrayList<userAccount> userAccountList) {
+		boolean authenticated = false;
+		int countToThree = 0;
+		while (authenticated == false)
+		{
+			String userEmail = Helper.readString("Email Address: ");
+			String userPassword = Helper.readString("Password: ");
+			
+			for (userAccount c : userAccountList)
+			{
+				if (userEmail.contentEquals(c.getemailAddress()) && userPassword.contentEquals(c.getStaffPassword()))
+				{
+					authenticated = true;
+				}
+				else if (countToThree == 3)
+				{
+					System.exit(0);
+				}
+				else
+				{
+					countToThree = countToThree++;
+				}
+			}
+		}
+	
+	}
+	
+	public static void showMenuCustomer()
+	{
 		C206_CaseStudy.setHeader("Customer");
 		System.out.println("1. Register");
 		System.out.println("2. Add Quotation");
@@ -200,7 +256,7 @@ public class C206_CaseStudy {
 	}
 
 	public static void showMenuAD() {
-		C206_CaseStudy.setHeader("Customer");
+		C206_CaseStudy.setHeader("Admin/Designer");
 		System.out.println("1. Manage Customer");
 		System.out.println("2. Manage Package");
 		System.out.println("3. Manage Request for Quotation");
@@ -212,11 +268,12 @@ public class C206_CaseStudy {
 	public static Customer inputCust() {
 		int customerID = Helper.readInt("Enter customer ID: ");
 		String customerName = Helper.readString("Enter your name: ");
+		String customerPassword = Helper.readString("Enter a password:");
 		int contactNumber = Helper.readInt("Enter your contact number: ");
 		String emailAddress = Helper.readString("Enter your email address: ");
 		String customerStatus = "New";
 
-		Customer cus = new Customer(customerID, customerName, contactNumber, emailAddress, customerStatus);
+		Customer cus = new Customer(customerID, customerName, customerPassword, contactNumber, emailAddress, customerStatus);
 		return cus;
 	}
 
@@ -224,27 +281,25 @@ public class C206_CaseStudy {
 		customerList.add(cus);
 		System.out.println("Customer added!");
 	}
-	//===========Register Customer(CustomerMenu)============
-
+	
 	// ==========Requesting for Quotation(CustomerMenu)========
 	public static Request requestQuotation() {
 		String quotationID = Helper.readString("Enter quotation ID: ");
 		String propertyType = Helper.readString("Enter property type(HDB,Private,Landed):");
 		int areaSize = Helper.readInt("Enter area size: ");
 		String requestName = Helper.readString("Enter request name: ");
-		int contactNo = Helper.readInt("Enter Contact Number: ");
-		String emailAddress = Helper.readString("Enter email Address: ");
+		int customerID = Helper.readInt("Enter customer ID: ");
 		int budgetAmount = Helper.readInt("Enter your budget: ");
 		String targetCompletionDate = Helper.readString("Enter the targeted completion date: ");
-		String renovationType = Helper.readString("Enter renovation type (whole house, room, kitchen, toilet)");
+		String renovationType = Helper.readString("Enter renovation type (whole house, room, kitchen, toilet): ");
 
 		int roomRenovationAmount = Helper.readInt("Enter number of room to renovate: ");
-		int toiletRenovationAmount = Helper.readInt("Enter number of toilets to renovate");
+		int toiletRenovationAmount = Helper.readInt("Enter number of toilets to renovate: ");
 		String renovationString = Helper.readString("Enter renovation style: ");
 
 		boolean isUrgent = Helper.readBoolean("Do you need it done within three months?");
 		
-		Request r = new Request(quotationID, propertyType, areaSize, requestName, contactNo, emailAddress, budgetAmount,
+		Request r = new Request(quotationID, propertyType, areaSize, requestName, customerID, budgetAmount,
 				targetCompletionDate, renovationType, roomRenovationAmount, toiletRenovationAmount, renovationString,
 				isUrgent);
 		return r;
@@ -254,22 +309,56 @@ public class C206_CaseStudy {
 		requestList.add(r);
 		System.out.println("New quotation added!");
 	}
+	
+	public static void addPackage(ArrayList<Package> packageList, Package p) {
+		packageList.add(p);
+		System.out.println("New package added!");
+	}
+	
 	// ==========Requesting for Quotation(CustomerMenu)========
 
-	public static void retrieveAllCustomer(ArrayList<Customer> customerList) {
+	public static String retrieveAllCustomer(ArrayList<Customer> customerList) {
 		String output = "";
 		for (int i = 0; i < customerList.size(); i++) {
-			output += String.format("%-84s\n", customerList.get(i).toString());
+			output += String.format("%-10s %-20s %-8s %-20s %-10s \n", customerList.get(i).getCustomerID(), customerList.get(i).getCustomerName(), customerList.get(i).getContactNumber(), customerList.get(i).getemailAddress(), customerList.get(i).getCustomerStatus());
 		}
 		System.out.println(output);
-
+		return output;
 	}
 
 	public static void viewAllCustomer(ArrayList<Customer> customerList) {
 		C206_CaseStudy.setHeader("CUSTOMER LIST");
-		String output = String.format(theOtherFormat, "ID", "NAME", "NUMBER", "EMAIL", "STATUS");
-		output += retrieveAllCustomer(customerList);
+		System.out.println(String.format(theOtherFormat, "ID", "NAME", "NUMBER", "EMAIL", "STATUS"));
+		retrieveAllCustomer(customerList);
+	}
+	
+	public static String retrieveAllRequests(ArrayList<Request> requestList)
+	{
+		String output = "";
+		for (int i = 0; i < requestList.size(); i++) {
+			output += String.format("%-5s %-10s %-5d %-30s %-4d %-5d %-15s %-10s %-5d %5-d %-10s %-5b \n", requestList.get(i).getQuotationID(), requestList.get(i).getPropertyType(), requestList.get(i).getAreaSize(), requestList.get(i).getRequestName(), requestList.get(i).getCustomerID(), requestList.get(i).getTargetCompletionDate(), requestList.get(i).getRenovationType(),requestList.get(i).getRoomRenovationAmount(), requestList.get(i).getToiletRenovationAmount(), requestList.get(i).getRenovationString(), requestList.get(i).isUrgent());
+		}
 		System.out.println(output);
-
+		return output;
+	}
+	
+	public static String retrieveAllPackages(ArrayList<Package> packageList)
+	{
+		String output = "";
+		for (int i = 0; i < packageList.size(); i++) {
+			output += String.format("%-5s %-20s %-20s %-20s %-5d \n", packageList.get(i).getPackageCode(), packageList.get(i).getPackageDescription(), packageList.get(i).getStartDate(), packageList.get(i).getEndDate(), packageList.get(i).getPackageAmount());
+		}
+		System.out.println(output);
+		return output;
+	}
+	
+	public static String retrieveAllUserAccounts(ArrayList<userAccount> userAccountList)
+	{
+		String output = "";
+		for (int i = 0; i < userAccountList.size(); i++) {
+			output += String.format("%-10s %-10s %-20s %-15s %-10s \n", userAccountList.get(i).getStaffName(), userAccountList.get(i).getStaffRole(), userAccountList.get(i).getemailAddress(), userAccountList.get(i).getStaffPassword(), userAccountList.get(i).getStaffStatus());
+		}
+		System.out.println(output);
+		return output;
 	}
 }
