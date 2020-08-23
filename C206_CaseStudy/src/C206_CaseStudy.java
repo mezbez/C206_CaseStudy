@@ -9,7 +9,6 @@ public class C206_CaseStudy {
 	private static final String theQuotationFormat = "%-5d %-5d %-10s %-10s %-10s %-20s %-15s %-10s \n";
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 
 		ArrayList<Request> requestList = new ArrayList<Request>();
 		ArrayList<Customer> customerList = new ArrayList<Customer>();
@@ -147,33 +146,11 @@ public class C206_CaseStudy {
 					int manageOption = Helper.readInt("Enter option > ");
 
 					if (manageOption == 1) {
-						String packageCode = Helper.readString("Enter package code > ");
-						String packageDescription = Helper.readString("Enter package description > ");
-						String packageStartDate = Helper.readString("Enter package start date > ");
-						String packageEndDate = Helper.readString("Enter package end date > ");
-						int packageAmount = Helper.readInt("Enter package amount > ");
-						Package packagetoAdd = new Package(packageCode, packageDescription, packageStartDate,
-								packageEndDate, packageAmount);
-						addPackage(packageList, packagetoAdd);
-						System.out.println("We've added your package for you!");
+						C206_CaseStudy.addPackages(packageList);
 					} else if (manageOption == 2) {
 						C206_CaseStudy.viewAllPackages(packageList);
 					} else if (manageOption == 3) {
-						String deletePackage = Helper.readString("Enter package code to delete package  > ");
-						boolean packageFound = false;
-
-						for (int i = 0; i < packageList.size(); i++) {
-							if (deletePackage.equals(packageList.get(i).getPackageCode())) {
-								System.out.println("Package Deleted");
-								packageList.remove(i);
-								packageFound = true;
-							}
-						}
-						if (packageFound == false) {
-							System.out.println("Invalid package code");
-						} else {
-							System.out.println("Invalid Option");
-						}
+						C206_CaseStudy.deletePackages(packageList);
 					}
 				} else if (adMenu == 3) {
 					System.out.println("1. Add a Request");
@@ -242,7 +219,6 @@ public class C206_CaseStudy {
 	}
 
 	private static void setHeader(String header) {
-		// TODO Auto-generated method stub
 		Helper.line(80, "-");
 		System.out.println(header);
 		Helper.line(80, "-");
@@ -436,11 +412,48 @@ public class C206_CaseStudy {
 		System.out.println(String.format(theCustomerFormat, "ID", "NAME", "NUMBER", "EMAIL", "STATUS"));
 		retrieveAllCustomer(customerList);
 	}
+	
+	// Option 2: Manage Packages
+	public static void addPackages(ArrayList<Package> packageList) {
+		
+		for (int i = 0; i < packageList.size(); i++) {
+			String packageCode = Helper.readString("Enter package code > ");
+			if (packageCode.equals(packageList.get(i).getPackageCode())) {
+				System.out.println("Package code cannot be repeated");
+			} else {
+				String packageDescription = Helper.readString("Enter package description > ");
+				String packageStartDate = Helper.readString("Enter package start date > ");
+				String packageEndDate = Helper.readString("Enter package end date > ");
+				int packageAmount = Helper.readInt("Enter package amount > ");
+				Package packagetoAdd = new Package(packageCode, packageDescription, packageStartDate, packageEndDate, packageAmount);
+				addPackage(packageList, packagetoAdd);
+				System.out.println("Package has been successfully added");
+			}
+		}
+	}
 
 	public static void viewAllPackages(ArrayList<Package> packageList) {
 		C206_CaseStudy.setHeader("PACKAGE LIST");
 		System.out.println(String.format(thePackageFormat, "CODE", "DESCRIPTION", "START DATE", "END DATE", "AMOUNT"));
 		retrieveAllPackages(packageList);
+	}
+	
+	public static void deletePackages(ArrayList<Package> packageList) {
+		String deletePackage = Helper.readString("Enter package code to delete package > ");
+		boolean packageFound = false;
+		
+		for (int i = 0; i < packageList.size(); i++) {
+			if (deletePackage.contentEquals(packageList.get(i).getPackageCode())) {
+				packageList.remove(i);
+				packageFound = true;
+				System.out.println("Package has been successfully deleted");
+			}
+		}
+		if (packageFound == false) {
+			System.out.println("Invalid package code");
+		} else {
+			System.out.println("Invalid option");
+		}
 	}
 
 	// Manage appointment
