@@ -140,15 +140,20 @@ public class C206_CaseStudy {
 				} else if (adMenu == 2) {
 					System.out.println("1. Add package");
 					System.out.println("2. View packages");
-					System.out.println("3. Delete packages");
-					int manageOption = Helper.readInt("Enter option > ");
+					System.out.println("3. Update package");
+					System.out.println("3. Delete package");
+					int choices2 = Helper.readInt("Enter option > ");
 
-					if (manageOption == 1) {
+					if (choices2 == 1) {
 						C206_CaseStudy.addPackages(packageList);
-					} else if (manageOption == 2) {
+					} else if (choices2 == 2) {
 						C206_CaseStudy.viewAllPackages(packageList);
-					} else if (manageOption == 3) {
+					} else if (choices2 == 3) {
+						C206_CaseStudy.updatePackages(packageList);
+					} else if (choices2 == 4) {
 						C206_CaseStudy.deletePackages(packageList);
+					} else {
+						System.out.println("Invalid option");
 					}
 				} else if (adMenu == 3) {
 					System.out.println("1. Add a Request");
@@ -435,6 +440,38 @@ public class C206_CaseStudy {
 		System.out.println(String.format(thePackageFormat, "CODE", "DESCRIPTION", "START DATE", "END DATE", "AMOUNT"));
 		retrieveAllPackages(packageList);
 	}
+	
+	public static void updatePackages(ArrayList<Package> packageList) {
+		
+		System.out.println("1. Update Package Description");
+		System.out.println("2. Update Package Start Date");
+		System.out.println("3. Update Package End Date");
+		System.out.println("3. Update Package Amount");
+		int updateChoices = Helper.readInt("Enter option > ");
+
+		if (updateChoices == 1) {
+			for (int i = 0; i < packageList.size(); i++) {
+				String packageCode = Helper.readString("Enter package code > ");
+				if (packageCode.equals(packageList.get(i).getPackageCode())) {
+					String newPackageDescription = Helper.readString("Enter new package description > ");
+					newPackageDescription.replace(packageList.get(i).getPackageDescription(), newPackageDescription);
+					System.out.println("Package description successfully updated");
+				} else {
+					System.out.println("Invalid package code");
+				}
+			} 
+			
+		} else if (updateChoices == 2) {
+		
+		} else if (updateChoices == 3) {
+		
+		} else if (updateChoices == 4) {
+			
+		} else {
+			System.out.println("Invalid option");
+	}
+		
+}
 	
 	public static void deletePackages(ArrayList<Package> packageList) {
 		String deletePackage = Helper.readString("Enter package code to delete package > ");
