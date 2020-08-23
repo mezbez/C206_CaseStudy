@@ -196,7 +196,8 @@ public class C206_CaseStudy {
 					} else if (choices4 == 2) {
 						C206_CaseStudy.ViewAllQuoation(quotationList);
 					} else if (choices4 == 3) {
-						C206_CaseStudy.DeleteQuotation(quotationList);
+						Quotation quot = inputQuot();
+						C206_CaseStudy.deleteQuotation(quotationList, quot);
 					} else {
 						System.out.println("Invalid option! ");
 					}
@@ -579,6 +580,26 @@ public class C206_CaseStudy {
 		Quotation quot = new Quotation(RID, QID, category, description, price, name, date, totalAmount);
 		return quot;
 	}
+	
+	public Quotation inputQuotID(ArrayList<Quotation> quotationList) {
+		int QID = Helper.readInt("Enter Quotation ID > ");
+		Quotation quot = null;
+		for (int i = 0; i < quotationList.size(); i++) {
+			if (QID == quotationList.get(i).getQuotationID()) {
+				int RID = quotationList.get(i).getRequestID();
+				String category = quotationList.get(i).getCategory();
+				String description = quotationList.get(i).getDescription();
+				String price = quotationList.get(i).getPrice();
+				String name = quotationList.get(i).getDesigner();
+				String date = quotationList.get(i).getStartDate();
+				String totalAmount = quotationList.get(i).getTotalAmount();
+				
+				quot = new Quotation(RID, QID, category, description, price, name, date, totalAmount);
+			}
+
+		}
+		return quot;
+	}
 
 	public static void addQuotation(ArrayList<Quotation> quotationList, Quotation quot) {
 		quotationList.add(quot);
@@ -605,25 +626,17 @@ public class C206_CaseStudy {
 		retrieveAllQuotation(quotationList);
 	}
 
-	public static void DeleteQuotation(ArrayList<Quotation> quotationList) {
-		int ID = Helper.readInt("Enter Quotation ID > ");
-		boolean isFound = false;
-
-		for (int i = 0; i < quotationList.size(); i++) {
-			if (ID == quotationList.get(i).getQuotationID()) {
-				System.out.println(quotationList.get(i).getQuotationID() + "deleted ! ");
-
-				quotationList.remove(i);
-				isFound = true;
-			}
-
-		}
-		if (isFound == false) {
-			System.out.println("The quotation ID entered does not exist");
-		} else {
-			System.out.println("Invalid option");
-
-		}
+	public static void deleteQuotation(ArrayList<Quotation> quotationList, Quotation quot) {
+		quotationList.remove(quot);
 	}
+	
+	public static void deleteRequests(ArrayList<Request> requestList, Request req) {
+		requestList.remove(req);
+	}
+	
+	public static void deleteCust(ArrayList<Customer> customerList, Customer cust) {
+		customerList.remove(cust);
+	}
+
 
 }
