@@ -126,6 +126,7 @@ public class C206_CaseStudy {
 					System.out.println("1. Add Customer");
 					System.out.println("2. View all Customer");
 					System.out.println("3. Delete Customer");
+					System.out.println("4. Search Customer by ID ");
 					// System.out.println("4. Search customer by name");
 					int choices = Helper.readInt("Enter an option > ");
 					if (choices == 1) {
@@ -135,6 +136,8 @@ public class C206_CaseStudy {
 						C206_CaseStudy.viewAllCustomer(customerList);
 					} else if (choices == 3) {
 						C206_CaseStudy.DeleteCustomer(customerList);
+					} else if (choices == 4) {
+						C206_CaseStudy.SearchCustomer(customerList);
 					} else {
 						System.out.println("Invalid option");
 					}
@@ -580,7 +583,7 @@ public class C206_CaseStudy {
 		Quotation quot = new Quotation(RID, QID, category, description, price, name, date, totalAmount);
 		return quot;
 	}
-	
+
 	public Quotation inputQuotID(ArrayList<Quotation> quotationList) {
 		int QID = Helper.readInt("Enter Quotation ID > ");
 		Quotation quot = null;
@@ -593,7 +596,7 @@ public class C206_CaseStudy {
 				String name = quotationList.get(i).getDesigner();
 				String date = quotationList.get(i).getStartDate();
 				String totalAmount = quotationList.get(i).getTotalAmount();
-				
+
 				quot = new Quotation(RID, QID, category, description, price, name, date, totalAmount);
 			}
 
@@ -629,14 +632,31 @@ public class C206_CaseStudy {
 	public static void deleteQuotation(ArrayList<Quotation> quotationList, Quotation quot) {
 		quotationList.remove(quot);
 	}
-	
+
 	public static void deleteRequests(ArrayList<Request> requestList, Request req) {
 		requestList.remove(req);
 	}
-	
+
 	public static void deleteCust(ArrayList<Customer> customerList, Customer cust) {
 		customerList.remove(cust);
 	}
 
+	public static void SearchCustomer(ArrayList<Customer> customerList) {
+		int CID = Helper.readInt("Enter Customer ID > ");
+		String output = "";
+		for (int i = 0; i < customerList.size(); i++) {
+			if (CID == customerList.get(i).getCustomerID()) {
+				output += String.format(theCustomerFormat, "ID", "NAME", "NUMBER", "EMAIL", "STATUS");
+				output += String.format(theCustomerFormat, customerList.get(i).getCustomerID(),
+						customerList.get(i).getCustomerName(), customerList.get(i).getContactNumber(),
+						customerList.get(i).getemailAddress(), customerList.get(i).getCustomerStatus());
 
+			} else {
+				System.out.println("Invalid ID ! ");
+			}
+
+		}
+		System.out.println(output);
+
+	}
 }
