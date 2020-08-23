@@ -413,14 +413,21 @@ public class C206_CaseStudy {
 	
 	// Option 2: Manage Packages
 	public static void addPackages(ArrayList<Package> packageList) {
-		String packageCode = Helper.readString("Enter package code > ");
-		String packageDescription = Helper.readString("Enter package description > ");
-		String packageStartDate = Helper.readString("Enter package start date > ");
-		String packageEndDate = Helper.readString("Enter package end date > ");
-		int packageAmount = Helper.readInt("Enter package amount > ");
-		Package packagetoAdd = new Package(packageCode, packageDescription, packageStartDate, packageEndDate, packageAmount);
-		addPackage(packageList, packagetoAdd);
-		System.out.println("Package has been successfully added");
+		
+		for (int i = 0; i < packageList.size(); i++) {
+			String packageCode = Helper.readString("Enter package code > ");
+			if (packageCode.equals(packageList.get(i).getPackageCode())) {
+				System.out.println("Package code cannot be repeated");
+			} else {
+				String packageDescription = Helper.readString("Enter package description > ");
+				String packageStartDate = Helper.readString("Enter package start date > ");
+				String packageEndDate = Helper.readString("Enter package end date > ");
+				int packageAmount = Helper.readInt("Enter package amount > ");
+				Package packagetoAdd = new Package(packageCode, packageDescription, packageStartDate, packageEndDate, packageAmount);
+				addPackage(packageList, packagetoAdd);
+				System.out.println("Package has been successfully added");
+			}
+		}
 	}
 
 	public static void viewAllPackages(ArrayList<Package> packageList) {
