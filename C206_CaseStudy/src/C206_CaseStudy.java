@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class C206_CaseStudy {
 	private static final String theCustomerFormat = "%-10s %-20s %-8s %-20s %-10s\n";
 	private static final String thePackageFormat = "%-6s %-60s %-20s %-20s %-5s \n";
-	private static final String theAppointmentFormat = "%-6s %-10s %-10s %-60s \n";
+	private static final String theAppointmentFormat = "%-6s %-20s %-20s %-60s \n";
 	private static final String theRequestFormat = "%-5s %-10s %-5s %-30s %-5s %-5s %-15s %-10s %-5s %-5s %-10s \n";
 	private static final String theUserAccountFormat = "%-10s %-10s %-20s %-15s %-10s \n";
 	private static final String theQuotationFormat = "%-5d %-5d %-10s %-10s %-10s %-20s %-15s %-10s \n";
@@ -680,7 +680,7 @@ public class C206_CaseStudy {
 		String aID = Helper.readString("Enter appointment ID > ");
 		String output = "";
 		for (int i = 0; i < appointmentList.size(); i++) {
-			if (aID == appointmentList.get(i).getAID()) {
+			if (aID.equalsIgnoreCase(appointmentList.get(i).getAID())) {
 				output += String.format(theAppointmentFormat, "ID", "DATE", "TIME", "VENUE");
 				output += String.format(theAppointmentFormat, appointmentList.get(i).getAID(),
 						appointmentList.get(i).getADate(), appointmentList.get(i).getATime(),
