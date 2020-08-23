@@ -127,7 +127,6 @@ public class C206_CaseStudy {
 					System.out.println("2. View all Customer");
 					System.out.println("3. Delete Customer");
 					System.out.println("4. Search Customer by ID ");
-					// System.out.println("4. Search customer by name");
 					int choices = Helper.readInt("Enter an option > ");
 					if (choices == 1) {
 						Customer cus = inputCust();
