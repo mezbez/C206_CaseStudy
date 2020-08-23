@@ -206,7 +206,7 @@ public class C206_CaseStudy {
 
 	}
 
-}
+
 
 	public static void menu() {
 		C206_CaseStudy.setHeader("RENOVATION ACE APP");
