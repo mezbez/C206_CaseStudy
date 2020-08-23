@@ -510,7 +510,6 @@ public class C206_CaseStudy {
 		} else {
 			System.out.println("Invalid option");
 	}
-		
 }
 	
 	public static void deletePackages(ArrayList<Package> packageList) {
