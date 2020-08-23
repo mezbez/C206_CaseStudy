@@ -137,7 +137,7 @@ public class C206_CaseStudy {
 					} else if (choices == 4) {
 						C206_CaseStudy.SearchCustomer(customerList);
 					} else {
-						System.out.println("Invalid option");
+						System.out.println("Invalid option!");
 					}
 				} else if (adMenu == 2) {
 					System.out.println("1. Add package");
