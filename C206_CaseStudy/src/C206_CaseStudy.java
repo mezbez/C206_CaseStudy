@@ -184,7 +184,8 @@ public class C206_CaseStudy {
 					System.out.println("1. Add Appointment");
 					System.out.println("2. View all Appointment");
 					System.out.println("3. Edit Appointments");
-					System.out.println("3. Delete Appointment");
+					System.out.println("4. Delete Appointment");
+					System.out.println("5. Search appointment by ID");
 					int choices1 = Helper.readInt("Enter a choice > ");
 					if (choices1 == 1) {
 						Appointment App = inputApp();
@@ -195,6 +196,8 @@ public class C206_CaseStudy {
 						C206_CaseStudy.manageAppointment(appointmentList);
 					} else if (choices1 == 4) {
 						C206_CaseStudy.deleteAppointment(appointmentList);
+					} else if (choices1 == 5) {
+						C206_CaseStudy.SearchAppointment(appointmentList);
 					} else {
 						System.out.println("Invalid option !");
 					}
@@ -412,10 +415,10 @@ public class C206_CaseStudy {
 		System.out.println(String.format(theCustomerFormat, "ID", "NAME", "NUMBER", "EMAIL", "STATUS"));
 		retrieveAllCustomer(customerList);
 	}
-	
+
 	// Option 2: Manage Packages
 	public static void addPackages(ArrayList<Package> packageList) {
-		
+
 		for (int i = 0; i < packageList.size(); i++) {
 			String packageCode = Helper.readString("Enter package code > ");
 			if (packageCode.equals(packageList.get(i).getPackageCode())) {
@@ -425,7 +428,8 @@ public class C206_CaseStudy {
 				String packageStartDate = Helper.readString("Enter package start date > ");
 				String packageEndDate = Helper.readString("Enter package end date > ");
 				int packageAmount = Helper.readInt("Enter package amount > ");
-				Package packagetoAdd = new Package(packageCode, packageDescription, packageStartDate, packageEndDate, packageAmount);
+				Package packagetoAdd = new Package(packageCode, packageDescription, packageStartDate, packageEndDate,
+						packageAmount);
 				addPackage(packageList, packagetoAdd);
 				System.out.println("Package has been successfully added");
 			}
@@ -437,11 +441,11 @@ public class C206_CaseStudy {
 		System.out.println(String.format(thePackageFormat, "CODE", "DESCRIPTION", "START DATE", "END DATE", "AMOUNT"));
 		retrieveAllPackages(packageList);
 	}
-	
+
 	public static void deletePackages(ArrayList<Package> packageList) {
 		String deletePackage = Helper.readString("Enter package code to delete package > ");
 		boolean packageFound = false;
-		
+
 		for (int i = 0; i < packageList.size(); i++) {
 			if (deletePackage.contentEquals(packageList.get(i).getPackageCode())) {
 				packageList.remove(i);
@@ -662,6 +666,25 @@ public class C206_CaseStudy {
 				output += String.format(theCustomerFormat, customerList.get(i).getCustomerID(),
 						customerList.get(i).getCustomerName(), customerList.get(i).getContactNumber(),
 						customerList.get(i).getemailAddress(), customerList.get(i).getCustomerStatus());
+
+			} else {
+				System.out.println("Invalid ID ! ");
+			}
+
+		}
+		System.out.println(output);
+
+	}
+
+	public static void SearchAppointment(ArrayList<Appointment> appointmentList) {
+		String aID = Helper.readString("Enter appointment ID > ");
+		String output = "";
+		for (int i = 0; i < appointmentList.size(); i++) {
+			if (aID == appointmentList.get(i).getAID()) {
+				output += String.format(theAppointmentFormat, "ID", "DATE", "TIME", "VENUE");
+				output += String.format(theAppointmentFormat, appointmentList.get(i).getAID(),
+						appointmentList.get(i).getADate(), appointmentList.get(i).getATime(),
+						appointmentList.get(i).getAVenue());
 
 			} else {
 				System.out.println("Invalid ID ! ");
