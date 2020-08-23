@@ -130,10 +130,16 @@ public class C206_CaseStudyTest {
 	
 	@After
 	public void tearDown() throws Exception {
-		//quotation01 = null;
+		quotation01 = null;
 		customer01 = null;
+		package01 = null;
+		userAccount01 = null;
+		appointmentList = null;
 		quotationList = null;
 		customerList = null;
+		packageList = null;
+		userAccountList = null;
+		appointmentList = null;
 	}
 
 }
