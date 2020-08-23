@@ -189,7 +189,7 @@ public class C206_CaseStudy {
 					System.out.println("1. Add Quotation");
 					System.out.println("2. View all Quotation");
 					System.out.println("3. Delete aQuotation");
-					int choices4 = Helper.readInt("ENter a choice > ");
+					int choices4 = Helper.readInt("Enter a choice > ");
 					if (choices4 == 1) {
 						Quotation quot = inputQuot();
 						C206_CaseStudy.addQuotation(quotationList, quot);
