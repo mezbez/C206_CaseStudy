@@ -453,62 +453,45 @@ public class C206_CaseStudy {
 	
 	public static void updatePackages(ArrayList<Package> packageList) {
 		
-		System.out.println("1. Update Package Description");
-		System.out.println("2. Update Package Start Date");
-		System.out.println("3. Update Package End Date");
-		System.out.println("3. Update Package Amount");
-		int updateChoices = Helper.readInt("Enter option > ");
-
-		if (updateChoices == 1) {
-			for (int i = 0; i < packageList.size(); i++) {
-				String packageCode = Helper.readString("Enter package code > ");
-				if (packageCode.equals(packageList.get(i).getPackageCode())) {
+		String packageCode = Helper.readString("Enter package code > ");
+		
+		for (int i = 0; i < packageList.size(); i++) {
+			if (packageCode.equals(packageList.get(i).getPackageCode())) {
+				System.out.println("1. Update Package Description");
+				System.out.println("2. Update Package Start Date");
+				System.out.println("3. Update Package End Date");
+				System.out.println("4. Update Package Amount");
+				int updateChoices = Helper.readInt("Enter option > ");
+				
+				if (updateChoices == 1) {
+					
 					String newPackageDescription = Helper.readString("Enter new package description > ");
-					newPackageDescription.replace(packageList.get(i).getPackageDescription(), newPackageDescription);
-					System.out.println("Package description successfully updated");
-				} else {
-					System.out.println("Invalid package code");
-				}
-			}
-			
-		} else if (updateChoices == 2) {
-			for (int i = 0; i < packageList.size(); i++) {
-				String packageCode = Helper.readString("Enter package code > ");
-				if (packageCode.equals(packageList.get(i).getPackageCode())) {
+					packageList.get(i).setPackageDescription(newPackageDescription);
+					System.out.println("Updated Successfully");
+					
+				} else if ( updateChoices == 2) {
+					
 					String newPackageStartDate = Helper.readString("Enter new package start date > ");
-					newPackageStartDate.replace(packageList.get(i).getPackageDescription(), newPackageStartDate);
-					System.out.println("Package description successfully updated");
-				} else {
-					System.out.println("Invalid package code");
-				}
-			}
-		
-		} else if (updateChoices == 3) {
-			for (int i = 0; i < packageList.size(); i++) {
-				String packageCode = Helper.readString("Enter package code > ");
-				if (packageCode.equals(packageList.get(i).getPackageCode())) {
+					packageList.get(i).setPackageStartDate(newPackageStartDate);
+					System.out.println("Updated Successfully");
+					
+				} else if (updateChoices == 3) {
+					
 					String newPackageEndDate = Helper.readString("Enter new package end date > ");
-					newPackageEndDate.replace(packageList.get(i).getPackageDescription(), newPackageEndDate);
-					System.out.println("Package description successfully updated");
+					packageList.get(i).setPackageEndDate(newPackageEndDate);
+					System.out.println("Updated Successfully");
+					
+				} else if (updateChoices == 4) {
+					
+					int newPackageAmount = Helper.readInt("Enter new package description > ");
+					packageList.get(i).setPackageAmount(newPackageAmount);
+					System.out.println("Updated Successfully");
+					
 				} else {
-					System.out.println("Invalid package code");
+					System.out.println("Invalid Option");
 				}
-			}
-		
-		} else if (updateChoices == 4) {
-			for (int i = 0; i < packageList.size(); i++) {
-				String packageCode = Helper.readString("Enter package code > ");
-				if (packageCode.equals(packageList.get(i).getPackageCode())) {
-					String newPackageAmount = Helper.readString("Enter new package amount > ");
-					newPackageAmount.replace(packageList.get(i).getPackageDescription(), newPackageAmount);
-					System.out.println("Package description successfully updated");
-				} else {
-					System.out.println("Invalid package code");
-				}
-			}
-			
-		} else {
-			System.out.println("Invalid option");
+				
+			}		
 	}
 }
 	

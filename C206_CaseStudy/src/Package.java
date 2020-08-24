@@ -39,4 +39,21 @@ public class Package {
 	{
 		return packageAmount;
 	}
+
+	public void setPackageDescription(String packageDescription) {
+		this.packageDescription = packageDescription;
+	}
+
+	public void setPackageStartDate(String packageStartDate) {
+		this.packageStartDate = packageStartDate;
+	}
+
+	public void setPackageEndDate(String packageEndDate) {
+		this.packageEndDate = packageEndDate;
+	}
+
+	public void setPackageAmount(int packageAmount) {
+		this.packageAmount = packageAmount;
+	}
+	
 }
