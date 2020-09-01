@@ -162,17 +162,20 @@ public class C206_CaseStudy {
 					}
 				} else if (adMenu == 3) {
 					System.out.println("1. Add a Request");
-					System.out.println("2. Manage a Request");
-					System.out.println("3. Search for Request");
-					System.out.println("4. Delete a Request");
+					System.out.println("2. View All Requests");
+					System.out.println("3. Manage Requests");
+					System.out.println("4. Search for Request");
+					System.out.println("5. Delete a Request");
 					int choices3 = Helper.readInt("Enter a choice > ");
 					if (choices3 == 1) {
 						C206_CaseStudy.requestQuotation();
 					} else if (choices3 == 2) {
 						C206_CaseStudy.viewAllRequests(requestList);
 					} else if (choices3 == 3) {
-						C206_CaseStudy.SearchRequest(requestList);
+						C206_CaseStudy.manageRequest(requestList);
 					} else if (choices3 == 4) {
+						C206_CaseStudy.SearchRequest(requestList);
+					} else if (choices3 == 5) {
 						C206_CaseStudy.DeleteRequest(requestList);
 					}
 				} else if (adMenu == 4) {
@@ -809,11 +812,113 @@ public class C206_CaseStudy {
 						packageList.get(i).getEndDate(), packageList.get(i).getPackageAmount());
 
 			} else {
-				output +="Invalid ID !";
+				output += "Invalid ID !";
 			}
 
 		}
 		System.out.println(output);
+
+	}
+	
+	public static void manageRequest(ArrayList<Request> requestList) {
+		String ID = Helper.readString("Enter request ID > ");
+		boolean gotIt = false;
+		boolean changePropertyType = false;
+		boolean changeAreaSize = false;
+		boolean changeRequestName = false;
+		boolean changeCustomerID = false;
+		boolean changeBudgetAmount = false;
+		boolean changeTargetCompletionDate = false;
+		boolean changeRenovationType = false;
+		boolean changeRoomRenovationAmount = false;
+		boolean changeToiletRenovationAmount = false;
+		boolean changeRenovationString = false;
+		boolean changeIsUrgent = false;
+		int theIndex = 0;
+		for (Request r : requestList) {
+			if (r.getQuotationID().contentEquals(ID)) {
+				System.out.println("Request for Quotation found!");
+				gotIt = true;
+			}
+			if (gotIt == false) {
+				theIndex = theIndex + 1;
+			}
+		}
+		if (gotIt == true) {
+			System.out.println("The current property type is " + requestList.get(theIndex).getPropertyType() + ".");
+			changePropertyType = Helper.readBoolean("Would you like to change the property type? >");
+			if (changePropertyType == true) {
+				String newPropertyType = Helper.readString("Enter the new property type.");
+				requestList.get(theIndex).setPropertyType(newPropertyType);
+			}
+			System.out.println("The current area size is " + requestList.get(theIndex).getAreaSize() + ".");
+			changeAreaSize = Helper.readBoolean("Would you like to change the area size? >");
+			if (changeAreaSize == true) {
+				int newAreaSize = Helper.readInt("Enter the new area size.");
+				requestList.get(theIndex).setAreaSize(newAreaSize);
+			}
+			System.out.println("The current name of request is " + requestList.get(theIndex).getRequestName() + ".");
+			changeRequestName = Helper.readBoolean("Would you like to change the request name? >");
+			if (changeRequestName == true) {
+				String newRequestName = Helper.readString("Enter the new request name.");
+				requestList.get(theIndex).setRequestName(newRequestName);
+			}
+			System.out.println("The current Customer ID it is attributed to is " + requestList.get(theIndex).getCustomerID() + ".");
+			changeCustomerID = Helper.readBoolean("Would you like to change it? >");
+			if (changeCustomerID == true) {
+				int newCustomerID = Helper.readInt("Enter the new Customer ID.");
+				requestList.get(theIndex).setCustomerID(newCustomerID);
+			}
+			System.out.println("The current budget amount is " + requestList.get(theIndex).getBudgetAmount() + ".");
+			changeBudgetAmount = Helper.readBoolean("Would you like to change it? >");
+			if (changeBudgetAmount == true) {
+				int newBudgetAmount = Helper.readInt("Enter the new budget amount.");
+				requestList.get(theIndex).setBudgetAmount(newBudgetAmount);
+			}
+			System.out.println("The current target completion date is " + requestList.get(theIndex).getTargetCompletionDate() + ".");
+			changeTargetCompletionDate = Helper.readBoolean("Would you like to change it? >");
+			if (changeTargetCompletionDate == true) {
+				String newTargetCompletionDate = Helper.readString("Enter the new target completion date.");
+				requestList.get(theIndex).setTargetCompletionDate(newTargetCompletionDate);
+			}
+			System.out.println("The current renovation type is " + requestList.get(theIndex).getRenovationType() + ".");
+			changeRenovationType = Helper.readBoolean("Would you like to change it? >");
+			if (changeRenovationType == true) {
+				String newRenovationType = Helper.readString("Enter the new renovation type.");
+				requestList.get(theIndex).setRenovationType(newRenovationType);
+			}
+			System.out.println("The current room renovation amount is " + requestList.get(theIndex).getRoomRenovationAmount() + ".");
+			changeRoomRenovationAmount = Helper.readBoolean("Would you like to change it? >");
+			if (changeRoomRenovationAmount == true) {
+				int newRoomRenovationAmount = Helper.readInt("Enter the new renovation type.");
+				requestList.get(theIndex).setRoomRenovationAmount(newRoomRenovationAmount);
+			}
+			System.out.println("The current toilet renovation amount is " + requestList.get(theIndex).getToiletRenovationAmount() + ".");
+			changeToiletRenovationAmount = Helper.readBoolean("Would you like to change it? >");
+			if (changeToiletRenovationAmount == true) {
+				int newToiletRenovationAmount = Helper.readInt("Enter the new renovation type.");
+				requestList.get(theIndex).setToiletRenovationAmount(newToiletRenovationAmount);
+			}
+			System.out.println("The current toilet renovation amount is " + requestList.get(theIndex).getToiletRenovationAmount() + ".");
+			changeToiletRenovationAmount = Helper.readBoolean("Would you like to change it? >");
+			if (changeToiletRenovationAmount == true) {
+				int newToiletRenovationAmount = Helper.readInt("Enter the new renovation type.");
+				requestList.get(theIndex).setToiletRenovationAmount(newToiletRenovationAmount);
+			}
+			System.out.println("The current renovation style is " + requestList.get(theIndex).getRenovationString() + ".");
+			changeRenovationString = Helper.readBoolean("Would you like to change it? >");
+			if (changeRenovationString == true) {
+				String newRenovationStyle = Helper.readString("Enter the new renovation style.");
+				requestList.get(theIndex).setRenovationString(newRenovationStyle);
+			}
+			System.out.println("Currently, whether it is urgent or not is set to " + requestList.get(theIndex).isUrgent() + ".");
+			changeIsUrgent = Helper.readBoolean("Would you like to change it? >");
+			if (changeIsUrgent == true) {
+				requestList.get(theIndex).setIsUrgent(requestList.get(theIndex).isUrgent());
+			}
+		} else {
+			System.out.println("Sorry, not found.");
+		}
 
 	}
 }

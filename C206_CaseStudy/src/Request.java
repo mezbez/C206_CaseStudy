@@ -87,4 +87,53 @@ public class Request {
 		return isUrgent;
 	}
 
+	public void setPropertyType(String newPropertyType) {
+		newPropertyType = propertyType;
+	}
+
+	public void setCustomerID(int newCustomerID) {
+		newCustomerID = customerID;
+	}
+	
+	public void setRequestName(String newRequestName) {
+		newRequestName = requestName;
+	}
+
+	public void setTargetCompletionDate(String newTargetCompletionDate) {
+		newTargetCompletionDate = targetCompletionDate;
+	}
+
+	public void setRenovationType(String newRenovationType) {
+		newRenovationType = renovationType;
+	}
+
+	/**
+	 * @param newRoomRenovationAmount
+	 */
+	public void setRoomRenovationAmount(int newRoomRenovationAmount) {
+		// TODO Auto-generated method stub
+		newRoomRenovationAmount = roomRenovationAmount;
+	}
+	
+	public void setToiletRenovationAmount(int newToiletRenovationAmount) {
+		// TODO Auto-generated method stub
+		newToiletRenovationAmount = toiletRenovationAmount;
+	}
+
+	public void setRenovationString(String newRenovationStyle) {
+		// TODO Auto-generated method stub
+		newRenovationStyle = renovationString;
+	}
+	
+	public void setIsUrgent(boolean isNowUrgent) {
+		if (isNowUrgent == true)
+		{
+			isUrgent = false;
+		}
+		else
+		{
+			isUrgent = true;
+		}
+	}
+
 }
