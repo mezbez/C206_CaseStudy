@@ -6,7 +6,7 @@ public class C206_CaseStudy {
 	private static final String theAppointmentFormat = "%-6s %-20s %-20s %-60s \n";
 	private static final String theRequestFormat = "%-5s %-10s %-5s %-30s %-5s %-5s %-15s %-10s %-5s %-5s %-10s \n";
 	private static final String theUserAccountFormat = "%-10s %-10s %-20s %-15s %-10s \n";
-	private static final String theQuotationFormat = "%-5d %-5d %-10s %-10s %-10s %-20s %-15s %-10s \n";
+	private static final String theQuotationFormat = "%-5s %-5s %-10s %-10s %-10s %-20s %-15s %-10s \n";
 
 	public static void main(String[] args) {
 
@@ -155,19 +155,23 @@ public class C206_CaseStudy {
 				} else if (adMenu == 3) {
 					System.out.println("1. Add a Request");
 					System.out.println("2. Manage a Request");
-					System.out.println("3. Delete a Request");
+					System.out.println("3. Search for Request");
+					System.out.println("4. Delete a Request");
 					int choices3 = Helper.readInt("Enter a choice > ");
 					if (choices3 == 1) {
 						C206_CaseStudy.requestQuotation();
 					} else if (choices3 == 2) {
 						C206_CaseStudy.viewAllRequests(requestList);
 					} else if (choices3 == 3) {
+						C206_CaseStudy.SearchRequest(requestList);
+					} else if (choices3 == 4) {
 						C206_CaseStudy.DeleteRequest(requestList);
 					}
 				} else if (adMenu == 4) {
 					System.out.println("1. Add Quotation");
 					System.out.println("2. View all Quotation");
-					System.out.println("3. Delete aQuotation");
+					System.out.println("3. Search a Quotation");
+					System.out.println("4. Delete a Quotation");
 					int choices4 = Helper.readInt("Enter a choice > ");
 					if (choices4 == 1) {
 						Quotation quot = inputQuot();
@@ -175,6 +179,8 @@ public class C206_CaseStudy {
 					} else if (choices4 == 2) {
 						C206_CaseStudy.ViewAllQuoation(quotationList);
 					} else if (choices4 == 3) {
+						C206_CaseStudy.SearchQuotation(quotationList);
+					} else if (choices4 == 4) {
 						Quotation quot = inputQuot();
 						C206_CaseStudy.deleteQuotation(quotationList, quot);
 					} else {
@@ -685,6 +691,51 @@ public class C206_CaseStudy {
 				output += String.format(theAppointmentFormat, appointmentList.get(i).getAID(),
 						appointmentList.get(i).getADate(), appointmentList.get(i).getATime(),
 						appointmentList.get(i).getAVenue());
+
+			} else {
+				System.out.println("Invalid ID ! ");
+			}
+
+		}
+		System.out.println(output);
+
+	}
+	
+	public static void SearchQuotation(ArrayList<Quotation> quotationList) {
+		int aID = Helper.readInt("Enter quotation ID > ");
+		String output = "";
+		for (int i = 0; i < quotationList.size(); i++) {
+			if (aID == quotationList.get(i).getQuotationID()) {
+				output += String.format(theQuotationFormat, "Request ID", "Quotation ID", "Category", "Description",
+						"Price", "Designer Name", "Start Date", "Total Quotation amount");
+				output += String.format(theQuotationFormat, quotationList.get(i).getRequestID(), quotationList.get(i).getQuotationID(), quotationList.get(i).getCategory(),
+						quotationList.get(i).getDescription(), quotationList.get(i).getPrice(),
+						quotationList.get(i).getDesigner(), quotationList.get(i).getStartDate(),
+						quotationList.get(i).getTotalAmount());
+
+			} else {
+				System.out.println("Invalid ID ! ");
+			}
+
+		}
+		System.out.println(output);
+
+	}
+	
+	public static void SearchRequest(ArrayList<Request> requestList) {
+		String aID = Helper.readString("Enter request ID > ");
+		String output = "";
+		for (int i = 0; i < requestList.size(); i++) {
+			if (aID.equalsIgnoreCase(requestList.get(i).getQuotationID())) {
+				output += String.format(theRequestFormat, "ID", "PROPERTY TYPE", "AREA SIZE", "REQUEST NAME",
+						"CUSTOMER ID", "BUDGET AMOUNT", "TARGET COMPLETION DATE", "RENOVATION TYPE", "ROOM RENOVATIONS MOUNT",
+						"TOILET RENOVATION AMOUNT", "RENOVATION STRING", "IS URGENT?");
+				output += String.format(theRequestFormat, requestList.get(i).getQuotationID(),
+						requestList.get(i).getPropertyType(), requestList.get(i).getAreaSize(),
+						requestList.get(i).getRequestName(), requestList.get(i).getCustomerID(),
+						requestList.get(i).getTargetCompletionDate(), requestList.get(i).getRenovationType(),
+						requestList.get(i).getRoomRenovationAmount(), requestList.get(i).getToiletRenovationAmount(),
+						requestList.get(i).getRenovationString(), requestList.get(i).isUrgent());
 
 			} else {
 				System.out.println("Invalid ID ! ");
