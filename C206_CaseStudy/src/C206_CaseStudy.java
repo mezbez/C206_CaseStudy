@@ -142,15 +142,23 @@ public class C206_CaseStudy {
 				} else if (adMenu == 2) {
 					System.out.println("1. Add package");
 					System.out.println("2. View packages");
-					System.out.println("3. Delete packages");
-					int manageOption = Helper.readInt("Enter option > ");
+					System.out.println("3. Update package");
+					System.out.println("4. Delete package");
+					System.out.println("5. Search package by ID");
+					int choices2 = Helper.readInt("Enter option > ");
 
-					if (manageOption == 1) {
+					if (choices2 == 1) {
 						C206_CaseStudy.addPackages(packageList);
-					} else if (manageOption == 2) {
+					} else if (choices2 == 2) {
 						C206_CaseStudy.viewAllPackages(packageList);
-					} else if (manageOption == 3) {
+					} else if (choices2 == 3) {
+						C206_CaseStudy.updatePackages(packageList);
+					} else if (choices2 == 4) {
 						C206_CaseStudy.deletePackages(packageList);
+					} else if (choices2 == 5) {
+						C206_CaseStudy.searchPackages(packageList);
+					} else {
+						System.out.println("Invalid option");
 					}
 				} else if (adMenu == 3) {
 					System.out.println("1. Add a Request");
@@ -448,6 +456,51 @@ public class C206_CaseStudy {
 		retrieveAllPackages(packageList);
 	}
 
+	
+	public static void updatePackages(ArrayList<Package> packageList) {
+		
+		String packageCode = Helper.readString("Enter package code > ");
+		
+		for (int i = 0; i < packageList.size(); i++) {
+			if (packageCode.equals(packageList.get(i).getPackageCode())) {
+				System.out.println("1. Update Package Description");
+				System.out.println("2. Update Package Start Date");
+				System.out.println("3. Update Package End Date");
+				System.out.println("4. Update Package Amount");
+				int updateChoices = Helper.readInt("Enter option > ");
+				
+				if (updateChoices == 1) {
+					
+					String newPackageDescription = Helper.readString("Enter new package description > ");
+					packageList.get(i).setPackageDescription(newPackageDescription);
+					System.out.println("Updated Successfully");
+					
+				} else if ( updateChoices == 2) {
+					
+					String newPackageStartDate = Helper.readString("Enter new package start date > ");
+					packageList.get(i).setPackageStartDate(newPackageStartDate);
+					System.out.println("Updated Successfully");
+					
+				} else if (updateChoices == 3) {
+					
+					String newPackageEndDate = Helper.readString("Enter new package end date > ");
+					packageList.get(i).setPackageEndDate(newPackageEndDate);
+					System.out.println("Updated Successfully");
+					
+				} else if (updateChoices == 4) {
+					
+					int newPackageAmount = Helper.readInt("Enter new package description > ");
+					packageList.get(i).setPackageAmount(newPackageAmount);
+					System.out.println("Updated Successfully");
+					
+				} else {
+					System.out.println("Invalid Option");
+				}
+				
+			}		
+	}
+}
+	
 	public static void deletePackages(ArrayList<Package> packageList) {
 		String deletePackage = Helper.readString("Enter package code to delete package > ");
 		boolean packageFound = false;
@@ -736,9 +789,27 @@ public class C206_CaseStudy {
 						requestList.get(i).getTargetCompletionDate(), requestList.get(i).getRenovationType(),
 						requestList.get(i).getRoomRenovationAmount(), requestList.get(i).getToiletRenovationAmount(),
 						requestList.get(i).getRenovationString(), requestList.get(i).isUrgent());
+			}
+			else
+			{
+				output += "Not found";
+			}
+			System.out.println(output);
+		}
+	}
+
+	public static void searchPackages(ArrayList<Package> packageList) {
+		String PID = Helper.readString("Enter package ID > ");
+		String output = "";
+		for (int i = 0; i < packageList.size(); i++) {
+			if (PID.equalsIgnoreCase(packageList.get(i).getPackageCode())) {
+				output += String.format(thePackageFormat, "CODE", "DESCRIPTION", "START DATE", "END DATE", "AMOUNT");
+				output += String.format(thePackageFormat, packageList.get(i).getPackageCode(),
+						packageList.get(i).getPackageDescription(), packageList.get(i).getStartDate(),
+						packageList.get(i).getEndDate(), packageList.get(i).getPackageAmount());
 
 			} else {
-				System.out.println("Invalid ID ! ");
+				output +="Invalid ID !";
 			}
 
 		}
